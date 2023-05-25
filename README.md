@@ -26,10 +26,11 @@ We plan to create a web application where RC4 residents can sign up for IGs sess
 * Tailwind CSS
 
 ## Backend
-*
+* Django
+* Django Rest Framework
 
 ## Database 
-*
+* PostgreSQL
 
 ## Tools
 * Typescript
