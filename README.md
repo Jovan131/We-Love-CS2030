@@ -49,7 +49,23 @@ We are using
 
 ### Considerations
 
+## IG Catalouge
+### Description
 
+### Considerations
+
+
+# Pipeline features
+## Notification 
+## My IG
+## Dark mode/Color schemes
+##
+
+# Wireframe
+Usage flow
+![image](https://github.com/Jovan131/We-Love-CS2030/assets/122341707/b73af328-9627-451d-bc49-ae3a8b1acdcd)
+
+# Database Design
 
 
 
