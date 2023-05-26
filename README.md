@@ -27,15 +27,17 @@ We plan to create a web application where RC4 residents can sign up for IGs sess
 
 ## Backend
 * Django
-* Django Rest Framework
+* Django Rest Framework (to create API consumed by React frontend)
 
 ## Database 
-* PostgreSQL
+* SQLite (temporary, will migrate to PostgreSQL later)
+* PostgreSQL 
 
 ## Tools
 * Typescript
 * Firebase? (Authentication)
 * Vercel
+* PythonAnywhere (to host Django backend API, may migrate to Render later)
 
 
 # Features
@@ -63,10 +65,14 @@ We are using
 ##
 
 # Wireframe
-Usage flow
+Usage flow (created using Excalidraw)
+
 ![image](https://github.com/Jovan131/We-Love-CS2030/assets/122341707/b73af328-9627-451d-bc49-ae3a8b1acdcd)
 
 # Database Design
+Blue: By Milestone 1
+Everything else: By Milestone 2, possibly also including an "Admin" role
 
+![ER diagram for database drawio](https://github.com/Jovan131/We-Love-CS2030/assets/122272142/ab2f543a-2a92-42e2-b0d1-dfcb284c0a88)
 
 
