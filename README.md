@@ -73,6 +73,6 @@ Usage flow (created using Excalidraw)
 Blue: By Milestone 1
 Everything else: By Milestone 2, possibly also including an "Admin" role
 
-![ER diagram for database drawio](https://github.com/Jovan131/We-Love-CS2030/assets/122272142/ab2f543a-2a92-42e2-b0d1-dfcb284c0a88)
+![ER diagram for database v1 drawio](https://github.com/Jovan131/We-Love-CS2030/assets/122272142/315c98a5-afbf-46a7-ac7d-ddfc26d48cda)
 
 
