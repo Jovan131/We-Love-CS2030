@@ -25,6 +25,9 @@ We plan to create a web application where RC4 residents can sign up for IGs sess
 * React
 * Tailwind CSS
 
+## Meta Framework
+* Next.js
+
 ## Backend
 * Django
 * Django Rest Framework (to create API consumed by React frontend)
@@ -43,26 +46,23 @@ We plan to create a web application where RC4 residents can sign up for IGs sess
 # Features
 ## Authentication
 ### Description
+Currently, we are using Firebase Authentication to do user registration. The user's information and their IG preferences are linked to their account. 
 
 ### Considerations
-We are using 
+Going forward, we will be moving our user database to our own database hosted on our backend
 
 ## Weekly IG Schedule
 ### Description
-
-### Considerations
-
-## IG Catalouge
-### Description
+On the home page, users can see a weekly view of all the IG slots that they have polled for (or are on the waiting list)
 
 ### Considerations
 
 
 # Pipeline features
+## IG Catalouge
 ## Notification 
 ## My IG
 ## Dark mode/Color schemes
-##
 
 # Wireframe
 Usage flow (created using Excalidraw)
