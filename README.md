@@ -25,47 +25,52 @@ We plan to create a web application where RC4 residents can sign up for IGs sess
 * React
 * Tailwind CSS
 
+## Meta Framework
+* Next.js
+
 ## Backend
-*
+* Django
+* Django Rest Framework (to create API consumed by React frontend)
 
 ## Database 
-*
+* SQLite (temporary, eventual migration to PostgreSQL)
+* PostgreSQL 
 
 ## Tools
 * Typescript
 * Firebase? (Authentication)
 * Vercel
+* PythonAnywhere (to host Django backend API, may migrate to Render later)
 
 
 # Features
 ## Authentication
 ### Description
+Currently, we are using Firebase Authentication to do user registration. The user's information and their IG preferences are linked to their account. 
 
 ### Considerations
-We are using 
+Going forward, we will be moving our user database to our own database hosted on our backend
 
 ## Weekly IG Schedule
 ### Description
-
-### Considerations
-
-## IG Catalouge
-### Description
+On the home page, users can see a weekly view of all the IG slots that they have polled for (or are on the waiting list)
 
 ### Considerations
 
 
 # Pipeline features
+## IG Catalouge
 ## Notification 
 ## My IG
 ## Dark mode/Color schemes
-##
 
 # Wireframe
-Usage flow
+Usage flow (created using Excalidraw)
+
 ![image](https://github.com/Jovan131/We-Love-CS2030/assets/122341707/b73af328-9627-451d-bc49-ae3a8b1acdcd)
 
 # Database Design
+Blue: By Milestone 1 (except polling functionality)
+Everything else: By Milestone 2, possibly also including an "Admin" role
 
-
-
+![ER diagram for database v1 drawio](https://github.com/Jovan131/We-Love-CS2030/assets/122272142/e0023c09-cef7-404e-abc5-76902e24901f)
