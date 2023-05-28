@@ -3,43 +3,21 @@
 import React, { useState } from 'react';
 import { Tab, Tabs, Container, Row, Col } from 'react-bootstrap';
 import 'tailwindcss/tailwind.css';
-
+import Calendar from '@/components/Calendar';
+import Layout from '@/components/Layout';
 
 const Dashboard = () => {
-  const [activeTab, setActiveTab] = useState('home');
-
-  const handleTabChange = (eventKey: string | null) => {
-    if (eventKey) {
-      setActiveTab(eventKey);
-    }
-  };
 
   return (
-    <div className="flex">
-      <div className="w-1/4 bg-gray-200">
-        <Tabs activeKey={activeTab} onSelect={handleTabChange} className="flex flex-col h-full">
-          <Tab eventKey="home" title="Home">
-            {/* Home Tab Content */}
-          </Tab>
-          <Tab eventKey="browse" title="Browse">
-            {/* Browse Tab Content */}
-          </Tab>
-          <Tab eventKey="settings" title="Settings">
-            {/* Settings Tab Content */}
-          </Tab>
-        </Tabs>
+    <Layout>
+      <div>
+        <h1 className="text-center font-bold text-4xl translate-y-10">Your Schedule for the week:</h1>
+
       </div>
-      <div className="w-3/4">
-        <Container className="py-4">
-          <Row>
-            <Col>
-              {/* Calendar Component with weekly view */}
-              {/* Replace this with your actual calendar component */}
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </div>
+        <div className="fixed top-1/3 left-10 w-11/12">
+            <Calendar/>
+        </div>
+    </Layout>
   );
 };
 
