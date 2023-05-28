@@ -50,7 +50,7 @@ Currently, we are using Firebase Authentication to do user registration. The use
 
 ### Considerations
 Going forward, we will be moving our user database to our own database hosted on our backend (PostgreSQL), and authentication will be done using JSON Web Tokens (JWT). JWTs will have two key benefits. Firstly, they can be signed, allowing us to be certain that the senders are really who they say they are. Additionally, the structure of a JWT allows you to verify that the content hasn't been tampered with.
-Importantly, there will also be 2 different classes of users: Resident and IG Head. For now, the essential diffference is that IG Heads have the ability to create new slots and manage them, as well as make announcements to update residents on any updates to their IG.
+Importantly, there will also be 2 different classes of users: Resident and IG Head. For now, the essential difference is that IG Heads have the ability to create new slots and manage them, as well as make announcements to update residents on any updates to their IG.
 
 ## Weekly IG Schedule
 ### Description
