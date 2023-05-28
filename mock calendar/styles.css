@@ -1,0 +1,138 @@
+
+
+.timeslots {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    margin-left: 50px;
+}
+
+.main-row {
+    display: grid;
+    grid-template-columns: 50px auto;
+    grid-template-areas: 
+    "days-of-week slots-row";
+    padding-bottom: 10px;
+}
+
+.days-of-week {
+    text-align: center;
+    padding-top: 5px;
+}
+
+.slots-row {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    background: lightgray;
+    border-style: solid;
+    border-width: 3px;
+    padding-top: 30px;
+}
+
+.badminton {
+    position: absolute;
+    background-color: green;
+    width: 315px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.squash {
+    position: absolute;
+    background-color: green;
+    width: 300px;
+    border-radius: 4px;
+    z-index: 5;
+    right: 125px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.floorball {
+    position: absolute;
+    background-color: turquoise;
+    width: 300px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 215px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.volleyball {
+    position: absolute;
+    background-color: orange;
+    width: 300px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 665px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.table-tennis {
+    position: absolute;
+    background-color: orange;
+    width: 300px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 515.6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.basketball {
+    position: absolute;
+    background-color: green;
+    width: 300px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 515.6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.rc4fe {
+    position: absolute;
+    background-color: orange;
+    width: 300px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 816px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.dodgeball {
+    position: absolute;
+    background-color: orange;
+    width: 300px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 365px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.rc4climbing {
+    position: absolute;
+    background-color: turquoise;
+    width: 470px;
+    border-radius: 4px;
+    z-index: 5;
+    left: 816px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
