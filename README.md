@@ -33,7 +33,7 @@ We plan to create a web application where RC4 residents can sign up for IGs sess
 * Django Rest Framework (to create API consumed by React frontend)
 
 ## Database 
-* SQLite (temporary, will migrate to PostgreSQL later)
+* SQLite (temporary, eventual migration to PostgreSQL)
 * PostgreSQL 
 
 ## Tools
@@ -70,9 +70,7 @@ Usage flow (created using Excalidraw)
 ![image](https://github.com/Jovan131/We-Love-CS2030/assets/122341707/b73af328-9627-451d-bc49-ae3a8b1acdcd)
 
 # Database Design
-Blue: By Milestone 1
+Blue: By Milestone 1 (except polling functionality)
 Everything else: By Milestone 2, possibly also including an "Admin" role
 
-![ER diagram for database v1 drawio](https://github.com/Jovan131/We-Love-CS2030/assets/122272142/315c98a5-afbf-46a7-ac7d-ddfc26d48cda)
-
-
+![ER diagram for database v1 drawio](https://github.com/Jovan131/We-Love-CS2030/assets/122272142/e0023c09-cef7-404e-abc5-76902e24901f)
