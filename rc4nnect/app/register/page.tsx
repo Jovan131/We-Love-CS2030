@@ -10,6 +10,7 @@ import Layout from "@/components/Layout";
 function Register() {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
+    const router = useRouter();
 
     const register = async (event: React.FormEvent) => {
       event.preventDefault(); // Prevent form submission
@@ -21,6 +22,7 @@ function Register() {
             registerPassword
         );
         console.log(user);
+        router.push("/login");
         } catch (error: any) {
         console.log(error.message);
         }
