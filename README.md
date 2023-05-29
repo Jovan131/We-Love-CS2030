@@ -8,11 +8,9 @@ In RC4, there are many (40+) Interest Groups (IG) that residents can choose to a
 Additionally, the large number of IGs means there are Interest Groups that may struggle to gain exposure to new members as their only means of communication and exposure currently is through these Telegram groups, and not every residents may choose to join so many groups.
 
 
-# User stories
+# User stories & Use cases
 We plan to create a web application where RC4 residents can sign up for IGs sessions, manage their weekly IGs schedule, and view information about other IGs they are interested in. With rc4nnect, we hope to eliminate the need to have multiple Telegram groups for every IG, and make the process of following and signing up for IGs less complicated for everyone.
 
-
-# Use cases
 1. As a resident of RC4, I want to be able to manage and view everything IGs-related in one place.
 2. As a frequent member of an Interest Group, I want to be able to quickly check the venue and timing for my IG’s sessions that week.
 3. As someone looking to try out new Interest Groups, I want to be able to quickly look at the list of IGs and the timings of their sessions to know which IG session I want to and can attend.
@@ -38,7 +36,7 @@ We plan to create a web application where RC4 residents can sign up for IGs sess
 
 ## Tools
 * Typescript
-* Firebase? (Authentication)
+* Firebase (Authentication)
 * Vercel
 * PythonAnywhere (to host Django backend API, may migrate to Render later)
 
@@ -65,6 +63,9 @@ Currently, users are able to see the number of slots currently available as well
 Going forward, we hope to allow users to view other essential information in a pop-up window upon clicking on each individual slot, such as venue, exactly who has currently polled for the slot, etc.
 
 # Pipeline features
+## Alerts 
+Web pop-up alerts in response to user actions such as succesful login/registration, "successfully polled for session", "no more available slots", etc. will be implemented for a better user experience
+
 ## IG Catalouge
 This will be a schedule of every IG in RC4. There will be options to filter based on category of IG (eg. sports/lifestyle/arts), venue of session, as well as other criteria.
 
