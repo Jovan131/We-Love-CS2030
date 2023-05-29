@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Tab, Tabs, Container, Row, Col } from 'react-bootstrap';
 import 'tailwindcss/tailwind.css';
 import Calendar from '@/components/Calendar';
 import Layout from '@/components/Layout';
