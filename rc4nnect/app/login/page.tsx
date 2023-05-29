@@ -78,7 +78,7 @@ function Login() {
           </form>
           <div className="mt-4">
             <button onClick={handleRegisterClick} className="text-white underline">
-              Don't have an account? Register here
+              Don&apos;t have an account? Register here
             </button>
           </div>
         </div>
