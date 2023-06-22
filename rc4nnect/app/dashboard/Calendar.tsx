@@ -27,7 +27,7 @@ function getStyle(slot: {
     gridRowStart: 1,
     gridRowEnd: 2,
     backgroundColor: (slot.residents.length <= slot.capacity) ? 'green' : 'orange',
-    borderRadius: '4px', 
+    borderRadius: '2px', 
     zIndex: 5, 
     paddingTop: '5px', 
     paddingBottom: '5px', 

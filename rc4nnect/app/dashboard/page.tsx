@@ -16,11 +16,9 @@ function getSlots() {
     }
   })
 }
-
 // change back function to async
 export default async function Dashboard() {
   const slots = await getSlots()
-
   return (
     <Layout>
       <div>
@@ -31,5 +29,4 @@ export default async function Dashboard() {
       </div>
     </Layout>
   );
-}
-
+}   
