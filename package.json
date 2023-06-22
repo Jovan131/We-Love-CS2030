@@ -1,8 +1,12 @@
 {
   "dependencies": {
+    "@prisma/client": "^4.16.0",
     "bootstrap": "^5.2.3",
     "firebase": "^9.22.0",
     "next-auth": "^4.22.1",
     "react-bootstrap": "^2.7.4"
+  },
+  "devDependencies": {
+    "prisma": "^4.15.0"
   }
 }

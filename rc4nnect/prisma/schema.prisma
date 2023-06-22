@@ -1,3 +1,52 @@
+
+// WHENEVER THIS FILE IS CHANGED, RUN THE COMMAND npx prisma migrate dev TO SYNC THE CHANGES TO THE DATABASE SERVER, then run
+// npm prisma generate TO PULL THE CHANGES TO THE LOCAL PRISMA SCHEMA
+
+// TO ADD NEW DATA FOR TESTING PURPOSES, RUN THE COMMAND npx prisma studio THEN ADD IN NEW RECORDS FROM THERE. REMEMBER TO 
+// SAVE CHANGES
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL")
+}
+
+model Resident {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  password String
+  slots    Slot[]
+  igs      IG[]
+  @@map("residents")
+}
+
+model Slot {
+  id            String     @default(cuid()) @id
+  capacity      Int?
+  venue         String
+  startDateTime DateTime   @map("start_date_time")
+  duration      Int
+  description   String?
+  igName        String     @map("ig_name")
+  ig            IG         @relation(fields: [igName], references: [name])
+  residents     Resident[]
+  @@map("slots")
+}
+
+model IG {
+  id                   String @default(cuid()) @id
+  name                 String @unique
+  category             String
+  numOfSessionsPerWeek Int    @map("num_of_sessions_per_week")
+  slots                Slot[]
+  members              Resident[]
+  @@map("igs")
+=======
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
@@ -24,4 +73,5 @@ model Post {
   published Boolean @default(false)
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
+
 }
