@@ -3,23 +3,23 @@ import React from 'react';
 type AppProps = {
   slots: {
     id: string;
-    capacity: number; 
+    capacity: any; 
     venue: string;
     startDateTime: Date;
     duration: number;
     igName: string;
-    residents: [];
+    residents: { name: string }[];
   }[];
 }
 
 function getStyle(slot: {
   id: string;
-  capacity: number; 
+  capacity: any; 
   venue: string;
   startDateTime: Date;
   duration: number;
   igName: string;
-  residents: [];
+  residents: { name: string }[];
 }) {
   return {
     gridColumnStart: 1 + ((slot.startDateTime.getHours() - 14) * 4) + (slot.startDateTime.getMinutes() / 15),
@@ -32,17 +32,17 @@ function getStyle(slot: {
     paddingTop: '5px', 
     paddingBottom: '5px', 
     textAlign: 'center',
-  }
+  } as const
 }
 
 function renderSlot(slot: {
   id: string;
-  capacity: number; 
+  capacity: any; 
   venue: string;
   startDateTime: Date;
   duration: number;
   igName: string;
-  residents: [];
+  residents: { name: string }[];
 }) {
   return (
     <div style={getStyle(slot)} key={slot.id}>

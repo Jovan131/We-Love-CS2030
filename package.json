@@ -4,5 +4,8 @@
     "firebase": "^9.22.0",
     "next-auth": "^4.22.1",
     "react-bootstrap": "^2.7.4"
+  },
+  "devDependencies": {
+    "prisma": "^4.15.0"
   }
 }
