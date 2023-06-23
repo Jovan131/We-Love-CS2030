@@ -1,15 +1,19 @@
-import React from 'react';
+"use client"
+
+import React, { useState } from 'react';
+import Modal from "./Modal";
+
 
 type AppProps = {
     slotInfo: {
-      id: string;
-      capacity: any; 
-      venue: string;
-      startDateTime: Date;
-      duration: number;
-      igName: string;
-      residents: { name: string }[];
-    };
+        id: string;
+        capacity: any; 
+        venue: string;
+        startDateTime: Date;
+        duration: number;
+        igName: string;
+        residents: { name: string }[];
+    },
 }
 
 function getStyle(slotInfo: {
@@ -38,10 +42,15 @@ function getStyle(slotInfo: {
   
 
 const Slot: React.FC<AppProps> = ({slotInfo}) => {
+    const [showModal, setShowModal] = useState(false);
+
     return (
-        <div style={getStyle(slotInfo)} key={slotInfo.id}>
-            {slotInfo.igName + ": " + slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
-        </div>
+        <>
+            <div style={getStyle(slotInfo)} key={slotInfo.id} onClick={() => setShowModal(true)}>
+                {slotInfo.igName + ": " + slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
+            </div>
+            <Modal slotInfo={slotInfo} isVisible={showModal} onClose={() => setShowModal(false)}/>
+        </>
     );
 }
 
