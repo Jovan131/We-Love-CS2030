@@ -1,70 +1,47 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase-config";
-import type { User } from "firebase/auth";
-import Layout from '@/components/Layout';
-import Link from "next/link";
+import Layout from '@/components/Layout'
+import { signIn } from 'next-auth/react'
+import React, { useRef } from 'react'
+import { toast } from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 
-function Login() {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
+const LoginPage = () => {
+  const email = useRef("")
+  const pass = useRef("")
+  const router = useRouter()
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async user => {
-      setUser(user);
-    });
-
-    return unsubscribe;
-  }, []);
-
-  const login = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent form submission
-
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      const user = userCredential.user;
-      console.log(user);
-      router.push("/dashboard"); // Redirect to /dashboard on successful login
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
-
-  const handleRegisterClick = () => {
-    router.push("/register");
-  };
+  const login = async () => {
+    const result = await signIn("credentials", {
+      email: email.current,
+      password: pass.current,
+      redirect: false
+    }).then((callback) => {
+      if (callback?.error) {
+        toast.error(callback.error)
+      }
+      if (callback?.ok && !callback?.error) {
+        toast.success('Logged in successfully')
+        router.push('/dashboard')
+      }
+    })
+  }
 
   return (
     <Layout>
       <div className="App flex items-center justify-center h-screen">
         <div className="text-center">
           <h1 className="mb-10 mt-0 text-4xl font-medium leading-tight text-primary">Welcome to rc4nnect</h1>
-          <form onSubmit={login}>
             <input
               className="outline-none duration-300 border-b-2 border-solid border-white focus:border-cyan-300 text-slate-900 p-2 w-full max-w-[40ch]"
               placeholder="Email..."
-              value={loginEmail}
-              onChange={(event) => {
-                setLoginEmail(event.target.value);
-              }}
+              onChange={(e) => (email.current = e.target.value)}
             />
             <input
               className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
               type="password"
               placeholder="Password..."
-              value={loginPassword}
-              onChange={(event) => {
-                setLoginPassword(event.target.value);
-              }}
+              onChange={(e) => (pass.current = e.target.value)}
             />
 
             <button
@@ -75,17 +52,15 @@ function Login() {
                       LOGIN
                   </h2>
             </button>
-          </form>
           <div className="mt-4">
-            <button onClick={handleRegisterClick} className="text-white underline">
+            <button className="text-white underline" onClick={() => router.push('/register')}>
               Don&apos;t have an account? Register here
             </button>
           </div>
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default Login;
-
+export default LoginPage

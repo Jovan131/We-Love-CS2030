@@ -21,7 +21,7 @@ const Calendar: React.FC<AppProps> = ({slots}) => {
     <div className="calendar-container">
       <div className="header">
         <ul className="timeslots" style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: 'repeat(10, minmax(0, 1fr))', marginLeft: '30px', marginRight: '20px' }}>
-          {timeSlots.map((timeSlot) => <li>{timeSlot}</li>)}
+          {timeSlots.map((timeSlot) => <li key={timeSlot}>{timeSlot}</li>)}
         </ul>
       </div>
       <div className="main">
