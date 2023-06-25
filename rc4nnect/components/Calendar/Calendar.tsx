@@ -26,10 +26,10 @@ const Calendar: React.FC<AppProps> = ({slots}) => {
       </div>
       <div className="main">
         {daysOfWeek.map((day, index) => (
-          <div className="main-row" style={{ display: 'grid', gridTemplateColumns: '50px auto', gridTemplateAreas: '"days-of-week slots-row"', paddingBottom: '10px' }}>
+          <div key = {index} className="main-row" style={{ display: 'grid', gridTemplateColumns: '50px auto', gridTemplateAreas: '"days-of-week slots-row"', paddingBottom: '10px' }}>
             <div className="days-of-week" style={{ textAlign: 'center', paddingTop: '5px' }}>{day}</div>
             <div className="slots-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(40, minmax(0, 1fr))', gridTemplateRows: '34.8px', background: 'lightgray'}}>
-              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => <Slot slotInfo={slot}/>)}
+              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => <Slot key={slot.id}  slotInfo={slot}/>)}
             </div>
           </div>
         ))}

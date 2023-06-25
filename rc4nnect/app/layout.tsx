@@ -1,9 +1,11 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+//import { Inter } from 'next/font/google'
 import Provider from './context/AuthContext'
 import ToasterContext from '@/app/context/ToasterContext'
+import { Montserrat } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({ subsets: ['latin'] })
+//const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
@@ -12,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}><Provider><ToasterContext />{children}</Provider></body>
+      <body className={montserrat.className}><Provider><ToasterContext />{children}</Provider></body>
     </html>
   )
 }
