@@ -28,8 +28,8 @@ function Register() {
   }
 
   return (
-    <NoSidebarLayout>
-      <div className="App flex items-center justify-center h-screen">
+
+      <div className="App flex items-center justify-center h-screen bg-slate-900">
         <div className="text-center">
           <h1 className="mb-10 mt-0 text-4xl font-medium leading-tight text-primary">Welcome to rc4nnect</h1>
           <form onSubmit={register}>
@@ -64,7 +64,7 @@ function Register() {
           </form>
         </div>
       </div>
-    </NoSidebarLayout>
+
   );
 }
 

@@ -45,7 +45,7 @@ export default function LoginPage() {
   }
 
   return (
-    <NoSidebarLayout>
+
       <div className="App flex items-center justify-center h-screen bg-slate-900">
         <div className="text-center">
           <Image
@@ -83,6 +83,6 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
-    </NoSidebarLayout>
+
   )
 }
