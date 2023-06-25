@@ -1,4 +1,9 @@
-import React from 'react';
+'use client'
+
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import SubscribeButton from './SubscribeButton';
+import PollButton from './PollButton';
 
 type AppProps = {
   slotInfo: {
@@ -12,10 +17,45 @@ type AppProps = {
   },
   isVisible: boolean,
   onClose: any,
+  session: any,
 }
 
-const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose}) => {
+const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
   if ( !isVisible ) return null;
+
+  const [polled, setPolled] = useState(false)
+
+  const checkIfPolled = async () => {
+    await axios.post('/api/getPolled', {
+    email: session.user.email,
+    slotInfoID: slotInfo.id,
+  }).then((response) => {
+    if (response.data === null) {
+      setPolled(false)
+    } else {
+      setPolled(true)
+    }
+  })
+  }
+
+  checkIfPolled()
+
+  // const [polled, setPolled] = useState(false)
+
+  // const checkIfPolled = async () => {
+  //   await axios.post('/api/getPolled', {
+  //   email: session.user.email,
+  //   slotInfoID: slotInfo.id,
+  // }).then((response) => {
+  //   if (response.data === null) {
+  //     setPolled(false)
+  //   } else {
+  //     setPolled(true)
+  //   }
+  // })
+  // }
+
+  // checkIfPolled()
 
   const handleClose = (e: any) => {
     if (e.target.id === 'wrapper' || e.target.id === 'inner-wrapper') onClose();
@@ -59,8 +99,8 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose}) => {
             <span className='font-semibold'>Slots availability:</span> {slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
           </p>
           <div className='flex justify-between'>
-            <button type="button" className="text-pink-700 hover:text-white border border-pink-700 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-pink-500 dark:text-pink-500 dark:hover:text-white dark:hover:bg-pink-500 dark:focus:ring-pink-800">SUBSCRIBE</button>
-            <button type="button" className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-0 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">POLL</button>
+            <SubscribeButton />
+            <PollButton polled={polled} slotID={slotInfo.id} email={session.user.email}/>
           </div>
         </div>
       </div>

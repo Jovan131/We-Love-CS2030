@@ -14,6 +14,7 @@ type AppProps = {
         igName: string;
         residents: { name: string }[];
     },
+    session: any
 }
 
 function getStyle(slotInfo: {
@@ -41,7 +42,7 @@ function getStyle(slotInfo: {
   
   
 
-const Slot: React.FC<AppProps> = ({slotInfo}) => {
+const Slot: React.FC<AppProps> = ({slotInfo, session}) => {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -49,7 +50,7 @@ const Slot: React.FC<AppProps> = ({slotInfo}) => {
             <div style={getStyle(slotInfo)} key={slotInfo.id} onClick={() => setShowModal(true)}>
                 {slotInfo.igName + ": " + slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
             </div>
-            <Modal slotInfo={slotInfo} isVisible={showModal} onClose={() => setShowModal(false)}/>
+            <Modal slotInfo={slotInfo} isVisible={showModal} onClose={() => setShowModal(false)} session={session}/>
         </>
     );
 }
