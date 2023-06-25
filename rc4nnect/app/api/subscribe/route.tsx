@@ -5,11 +5,17 @@ export async function POST(request: any) {
   const body = await request.json()
   const { email, slotID } = body
 
+  const slot = await prisma.slot.findUnique({
+    where: {
+      id: slotID,
+    }
+  })
+
   const resident = await prisma.resident.update({
     where: { email: email },
     data: {
-      slots: {
-        connect: {id: slotID}
+      igs: {
+        connect: {name: slot?.igName}
       }
     }
   })
