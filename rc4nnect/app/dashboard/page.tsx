@@ -34,7 +34,9 @@ export default async function Dashboard() {
     <Layout routeIndex={0}>
       <div>
         <div>
-          <h1 className="text-center font-bold text-4xl justify-center items-center mt-40">Your Schedule for Week 1:</h1>
+          <h1 className="text-center font-bold text-4xl justify-center items-center mt-40">
+            {`Hi ${session?.user?.name}! Here is your Schedule for Week 1:`}
+          </h1>
         </div>
         <div className="mt-12">
             <Calendar session={session} slots={slots}/>
