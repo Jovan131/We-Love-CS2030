@@ -37,7 +37,7 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose}) => {
     id='wrapper' onClick={handleClose}>
       <div className='w-[600px] flex flex-col' id='inner-wrapper'>
         <button className='text-white text-xl place-self-end' onClick={() => onClose()}>X</button>
-        <div className='bg-slate-400 p-7 rounded text-black text-xl'>
+        <div className='bg-slate-200 p-7 rounded text-black text-xl'>
           <p className='font-normal py-3 mb-2'>
             <span className='font-semibold text-5xl'>{slotInfo.igName}</span>
           </p>
