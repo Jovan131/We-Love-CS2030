@@ -6,6 +6,7 @@ import { hash } from "bcrypt";
 import { useState } from "react";
 import { toast } from "react-hot-toast"
 import { useRouter } from 'next/navigation'
+import NoSidebarLayout from "@/components/NoSidebarLayout";
 
 function Register() {
   const [data, setData] = useState({
@@ -27,7 +28,7 @@ function Register() {
   }
 
   return (
-    <Layout>
+    <NoSidebarLayout>
       <div className="App flex items-center justify-center h-screen">
         <div className="text-center">
           <h1 className="mb-10 mt-0 text-4xl font-medium leading-tight text-primary">Welcome to rc4nnect</h1>
@@ -63,7 +64,7 @@ function Register() {
           </form>
         </div>
       </div>
-    </Layout>
+    </NoSidebarLayout>
   );
 }
 
