@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
-import Calendar from '@/app/dashboard/Calendar';
+import Calendar from '@/components/Calendar/Calendar';
 import Layout from '@/components/Layout';
 import { prisma } from "@/app/db";
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
