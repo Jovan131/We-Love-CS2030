@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react'
 import React, { useRef } from 'react'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
+import NoSidebarLayout from '@/components/NoSidebarLayout'
 
 const LoginPage = () => {
   const email = useRef("")
@@ -28,7 +29,7 @@ const LoginPage = () => {
   }
 
   return (
-    <Layout>
+    <NoSidebarLayout>
       <div className="App flex items-center justify-center h-screen">
         <div className="text-center">
           <h1 className="mb-10 mt-0 text-4xl font-medium leading-tight text-primary">Welcome to rc4nnect</h1>
@@ -59,7 +60,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </NoSidebarLayout>
   )
 }
 
