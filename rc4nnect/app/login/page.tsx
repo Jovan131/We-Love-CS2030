@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Logo from "public/logo.svg"
 import { useEffect } from 'react'
 import { Provider } from 'next-auth/providers'
+import NoSidebarLayout from '@/components/NoSidebarLayout'
 
 export default function LoginPage() {
   
@@ -19,6 +20,7 @@ export default function LoginPage() {
       router.push('/dashboard')
     }
   })
+
 
   const email = useRef("")
   const pass = useRef("")
@@ -43,7 +45,7 @@ export default function LoginPage() {
   }
 
   return (
-    
+    <NoSidebarLayout>
       <div className="App flex items-center justify-center h-screen bg-slate-900">
         <div className="text-center">
           <Image
@@ -81,6 +83,6 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
-
+    </NoSidebarLayout>
   )
 }

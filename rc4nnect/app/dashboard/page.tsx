@@ -23,10 +23,12 @@ export default async function Dashboard() {
   return (
     <Layout>
       <div>
-        <h1 className="text-center font-bold text-4xl translate-y-10 pl-32">Your Schedule for the week:</h1>
-      </div>
-      <div className="fixed top-1/3 left-10 w-11/12 pl-32">
-          <Calendar slots={slots}/>
+        <div>
+          <h1 className="text-center font-bold text-4xl">Your Schedule for the week:</h1>
+        </div>
+        <div >
+            <Calendar slots={slots}/>
+        </div>
       </div>
     </Layout>
   );
