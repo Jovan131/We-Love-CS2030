@@ -21,9 +21,9 @@ type AppProps = {
 }
 
 const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
-  if ( !isVisible ) return null;
-
   const [polled, setPolled] = useState(false)
+
+  if ( !isVisible ) return null;
 
   const checkIfPolled = async () => {
     await axios.post('/api/getPolled', {
