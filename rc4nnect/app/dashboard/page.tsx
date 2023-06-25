@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
-import Calendar from '@/app/dashboard/Calendar';
+import Calendar from '@/components/Calendar/Calendar';
 import Layout from '@/components/Layout';
 import { prisma } from "@/app/db";
 import { getServerSession } from 'next-auth';
@@ -17,6 +17,7 @@ function getSlots() {
     }
   })
 }
+
 // change back function to async
 export default async function Dashboard() {
   const slots = await getSlots()
@@ -26,10 +27,10 @@ export default async function Dashboard() {
     <Layout>
       <div>
         <div>
-          <h1 className="text-center font-bold text-4xl">Your Schedule for the week:</h1>
+          <h1 className="text-center font-bold text-4xl justify-center items-center mt-40">Your Schedule for the week:</h1>
         </div>
-        <div >
-            <Calendar slots={slots} session={session}/>
+        <div className="mt-12">
+            <Calendar session={session} slots={slots}/>
         </div>
       </div>
     </Layout>
