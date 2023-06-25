@@ -6,7 +6,11 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation'
 
-export default function Sidebar() {
+type AppProps = {
+  routeIndex: number
+}
+
+export default function Sidebar({ routeIndex }: AppProps) {
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "My Dashboard", src: "Calendar", redirectURL: "/dashboard" },
@@ -50,7 +54,7 @@ export default function Sidebar() {
             key={index}
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
             ${Menu.gap ? "mt-9" : "mt-2"} ${Menu.bigGap ? "mt-[21.2rem]" : ""} ${
-              index === 0 && "bg-light-white"
+              index === routeIndex && "bg-light-white"
             } `}
             onClick={() => {
               if (Menu.redirectURL === '/logout') {
