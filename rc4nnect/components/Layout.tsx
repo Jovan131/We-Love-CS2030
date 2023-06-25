@@ -13,7 +13,6 @@ export default function Layout(props: LayoutProps) {
       <main className='flex-1 flex flex-col p-4'>
         {children}
       </main>
-
     </div>
   );
 }
