@@ -2,8 +2,8 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import SubscribeButton from '@/app/dashboard/SubscribeButton';
-import PollButton from '@/app/dashboard/PollButton';
+import SubscribeButton from '../Popup/SubscribeButton';
+import PollButton from '../Popup/PollButton';
 
 type AppProps = {
   slotInfo: {
