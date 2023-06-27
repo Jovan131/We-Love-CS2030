@@ -106,3 +106,5 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
 }
 
 export default Modal
+
+
