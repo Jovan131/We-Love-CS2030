@@ -71,6 +71,11 @@ function Register() {
               </h2>
             </button>
           </form>
+          <div className="mt-4">
+            <button className="text-white underline" onClick={() => router.push('/login')}>
+              Already have an account? Login here
+            </button>
+          </div>
         </div>
       </div>
 
