@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import NoSidebarLayout from "@/components/NoSidebarLayout";
 import Image from 'next/image'
 import Logo from "public/logo.svg"
+import { NextResponse } from 'next/server'
 
 function Register() {
   const [data, setData] = useState({
@@ -22,11 +23,15 @@ function Register() {
   const register = async (e: any) => {
     e.preventDefault()
     axios.post('/api/register', data)
-      .then(() => {
-        toast.success('User has been registered!')
-        router.push('/login')
-      })
-      .catch(() => toast.error('Something went wrong!'))
+    .then(() => {
+      toast.success('User has been registered!')
+      router.push('/login')
+    })
+    .catch((error) => {
+      toast.error(error.response.data)
+      setData({name: '', email: '', password: ''})
+    }
+    )
   }
 
   return (

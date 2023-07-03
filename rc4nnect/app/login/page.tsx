@@ -29,7 +29,7 @@ export default function LoginPage() {
 
   const login = async (e: any) => {
     e.preventDefault()
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       email: email.current,
       password: pass.current,
       redirect: false
