@@ -32,11 +32,13 @@ function getStyle(slotInfo: {
       gridRowStart: 1,
       gridRowEnd: 2,
       backgroundColor: (slotInfo.residents.length <= slotInfo.capacity) ? 'green' : 'orange',
-      borderRadius: '2px', 
+      borderRadius: '4px', 
       zIndex: 5, 
       paddingTop: '5px', 
       paddingBottom: '5px', 
       textAlign: 'center',
+      marginLeft: '1px',
+      marginRight: '1px'
     } as const
 }
   
