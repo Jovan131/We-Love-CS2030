@@ -20,5 +20,5 @@ export async function POST(request: any) {
     }
   })
 
-  return NextResponse.json(resident)
+  return NextResponse.json(slot?.igName)
 }

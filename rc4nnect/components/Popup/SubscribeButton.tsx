@@ -18,8 +18,10 @@ const SubscribeButton: React.FC<AppProps> = ({subscribed, slotID, email}) => {
       axios.post('/api/subscribe', {
         email: email,
         slotID: slotID
-      }).then(() => {
-        toast.success('Subscribed!')
+      }).then((response) => {
+        toast.success(`Subscribed to "${response.data}" !`, {       //response.data is the igName of the slot
+          duration: 3000   //increase the time of the notification on-screen
+        }) 
         router.refresh()
       })  
     }}>SUBSCRIBE</button>
@@ -29,8 +31,10 @@ const SubscribeButton: React.FC<AppProps> = ({subscribed, slotID, email}) => {
       axios.post('/api/unsubscribe', {
         email: email,
         slotID: slotID
-      }).then(() => {
-        toast.success('Unsubscribed!')
+      }).then((response) => {
+        toast.success(`Unsubscribed from "${response.data}" !`, {       //response.data is the igName of the slot
+          duration: 3000
+        }) 
         router.refresh()
       })  
     }}>UNSUBSCRIBE</button>
