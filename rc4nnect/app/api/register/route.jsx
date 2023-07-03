@@ -10,6 +10,10 @@ export async function POST(request) {
     return new NextResponse('Missing fields', { status: 400 })
   }
 
+  if (!email.endsWith("@u.nus.edu")) {
+    return new NextResponse('Please enter a valid NUS email', { status: 400 })
+  }
+
   const exist = await prisma.resident.findUnique({
     where: {
       email
