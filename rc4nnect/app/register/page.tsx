@@ -15,7 +15,8 @@ function Register() {
   const [data, setData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   })
   const router = useRouter()
 
@@ -29,7 +30,6 @@ function Register() {
     })
     .catch((error) => {
       toast.error(error.response.data)
-      setData({name: '', email: '', password: ''})
     }
     )
   }
@@ -66,7 +66,13 @@ function Register() {
               value={data.password}
               onChange={(e) => setData({ ...data, password: e.target.value })}
               />
-
+            <input
+              className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
+              type="password"
+              placeholder="Confirm Password..."
+              value={data.confirmPassword}
+              onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
+              />
             <button
               type="submit"
               className="w-full max-w-[40ch] border border-white  text-white border-solid uppercase py-2 duration-300 relative after:absolute after:top-0 after:right-full after:bg-white after:z-10 after:w-full after:h-full overflow-hidden hover:after:translate-x-full after:duration-300 hover:text-slate-900"
