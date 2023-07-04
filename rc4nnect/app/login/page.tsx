@@ -7,9 +7,10 @@ import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Logo from "public/logo.svg"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Provider } from 'next-auth/providers'
 import NoSidebarLayout from '@/components/NoSidebarLayout'
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 export default function LoginPage() {
   
@@ -20,7 +21,6 @@ export default function LoginPage() {
       router.push('/dashboard')
     }
   })
-
 
   const email = useRef("")
   const pass = useRef("")
@@ -44,6 +44,11 @@ export default function LoginPage() {
     })
   }
 
+  const [showPassword, setShowPassword] = useState(false)
+  const toggle = () => {
+    setShowPassword(!showPassword)
+  }
+
   return (
 
       <div className="App flex items-center justify-center h-screen bg-slate-900">
@@ -61,13 +66,20 @@ export default function LoginPage() {
               placeholder="Email"
               onChange={(e) => (email.current = e.target.value)}
             />
-            <input
-              className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
-              type="password"
-              placeholder="Password"
-              onChange={(e) => (pass.current = e.target.value)}
-            />
-
+            <div className='relative'>
+              <input
+                className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                onChange={(e) => (pass.current = e.target.value)}
+              />
+              <div className='text-2xl absolute top-1 right-2'>
+                {
+                  (showPassword === false) ? <AiFillEye onClick={toggle} /> : 
+                  <AiFillEyeInvisible onClick={toggle} />
+                }
+              </div>
+            </div>
             <button
               onClick={login}
               type="submit"
