@@ -10,6 +10,7 @@ import NoSidebarLayout from "@/components/NoSidebarLayout";
 import Image from 'next/image'
 import Logo from "public/logo.svg"
 import { NextResponse } from 'next/server'
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 function Register() {
   const [data, setData] = useState({
@@ -32,6 +33,16 @@ function Register() {
       toast.error(error.response.data)
     }
     )
+  }
+
+  const [showPassword, setShowPassword] = useState(false)
+  const togglePassword = () => {
+    setShowPassword(!showPassword)
+  }
+
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const toggleConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword)
   }
 
   return (
@@ -59,20 +70,34 @@ function Register() {
               value={data.email}
               onChange={(e) => setData({ ...data, email: e.target.value })}
               />
-            <input
-              className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
-              type="password"
-              placeholder="Password..."
-              value={data.password}
-              onChange={(e) => setData({ ...data, password: e.target.value })}
+            <div className='relative'>
+              <input
+                className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
+                type={showPassword ? "text" : "password"}
+                placeholder="Password..."
+                onChange={(e) => setData({ ...data, password: e.target.value })}
               />
-            <input
-              className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
-              type="password"
-              placeholder="Confirm Password..."
-              value={data.confirmPassword}
-              onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
-              />
+              <div className='text-2xl absolute top-1 right-2'>
+                {
+                  (showPassword === false) ? <AiFillEye onClick={togglePassword} /> : 
+                  <AiFillEyeInvisible onClick={togglePassword} />
+                }
+              </div>
+            </div> 
+            <div className='relative'>
+              <input
+                className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm Password..."
+                onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
+                />
+              <div className='text-2xl absolute top-1 right-2'>
+                {
+                  (showConfirmPassword === false) ? <AiFillEye onClick={toggleConfirmPassword} /> : 
+                  <AiFillEyeInvisible onClick={toggleConfirmPassword} />
+                }
+              </div>
+            </div>            
             <button
               type="submit"
               className="w-full max-w-[40ch] border border-white  text-white border-solid uppercase py-2 duration-300 relative after:absolute after:top-0 after:right-full after:bg-white after:z-10 after:w-full after:h-full overflow-hidden hover:after:translate-x-full after:duration-300 hover:text-slate-900"
