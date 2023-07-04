@@ -6,16 +6,24 @@ export async function POST(request) {
   const body = await request.json()
   const { name, email, password, confirmPassword } = body
 
-  if (!name || !email || !password || !confirmPassword) {
-    return new NextResponse('Missing fields', { status: 400 })
+  if (!name) {
+    return new NextResponse('Please enter your name', { status: 400 })
   }
 
-  if (!email.endsWith("@u.nus.edu")) {
+  if (!email || !email.endsWith("@u.nus.edu")) {
     return new NextResponse('Please enter a valid NUS email', { status: 400 })
   }
 
+  if (!password) {
+    return new NextResponse('Please enter a password', { status: 400 })  
+  }
+
+  if (!confirmPassword) {
+    return new NextResponse('Please reconfirm your password', { status: 400 })  
+  }
+
   if (password != confirmPassword) {
-    return new NextResponse('Passwords don\'t match', { status: 400 })
+    return new NextResponse('Passwords do not match', { status: 400 })
   }
 
   const exist = await prisma.resident.findUnique({
