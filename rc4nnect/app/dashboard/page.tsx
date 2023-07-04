@@ -7,15 +7,34 @@ import { Session, getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { SessionContext } from 'next-auth/react';
 
-// Only find the slots that contain our current user
-function getSlots(session: Session) {
-  return prisma.slot.findMany({
+// Only find the slots that contain our current user OR slot.ig.members contains our current user
+async function getSlots(session: Session) {
+  const subscribedIgs = await prisma.iG.findMany({
     where: {
-      residents: {
+      members: {
         some: {
           email: session.user?.email!
         }
       }
+    }
+  })
+
+  return await prisma.slot.findMany({
+    where: {
+      OR: [
+        {
+          residents: {
+            some: {
+              email: session.user?.email!
+            }
+          }
+        },
+        {
+          igName: {
+            in: subscribedIgs.map(ig => ig.name)
+          }
+        }
+      ],
     },
     include: {
       residents: {
