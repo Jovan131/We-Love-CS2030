@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'tailwindcss/tailwind.css';
 import Calendar from '@/components/Calendar/Calendar';
 import Layout from '@/components/Layout';
 import { prisma } from "@/app/db";
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import { SessionContext } from 'next-auth/react';
 
 
 function getSlots() {
   return prisma.slot.findMany({
     include: {
       residents: {
-        select: { name: true }
+        select: { name: true, id: true }
       }
     }
   })
