@@ -14,18 +14,19 @@ type AppProps = {
         igName: string;
         residents: { name: string }[];
     },
-    session: any
+    session: any,
+    color: string,
 }
 
-const Slot: React.FC<AppProps> = ({slotInfo, session}) => {
+const Slot: React.FC<AppProps> = ({slotInfo, session, color}) => {
     const [showModal, setShowModal] = useState(false);
-
+        
     const colStartValue = 1 + ((slotInfo.startDateTime.getHours() - 14) * 4) + (slotInfo.startDateTime.getMinutes() / 15)
     const colEndValue = 1 + ((slotInfo.startDateTime.getHours() - 14) * 4) + (slotInfo.startDateTime.getMinutes() / 15) + (slotInfo.duration * 4)
 
     return (
         <>
-            <div className={`row-start-1 row-end-2 ${(slotInfo.residents.length <= slotInfo.capacity) ? 'bg-green-600 hover:bg-green-800' : 'bg-orange-500 hover:bg-orange-700'} 
+            <div className={`row-start-1 row-end-2 ${color} 
             rounded z-[5] py-2 text-center mx-px cursor-pointer`} 
             style={{gridColumnStart: colStartValue, gridColumnEnd: colEndValue}}
             key={slotInfo.id} 

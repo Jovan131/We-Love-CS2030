@@ -38,7 +38,7 @@ async function getSlots(session: Session) {
     },
     include: {
       residents: {
-        select: { name: true }
+        select: { name: true, id: true }
       }
     }
   })
