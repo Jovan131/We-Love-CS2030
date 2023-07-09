@@ -4,7 +4,7 @@ import Layout from '@/components/Layout';
 import { prisma } from "@/app/db";
 import { Session, getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import DynamicCalendar from './DynamicCalendar';
+import Calendar from '@/components/Calendar/Calendar';
 
 // Only find the slots that contain our current user OR slot.ig.members contains our current user
 async function getSlots(session: Session) {
@@ -109,7 +109,9 @@ export default async function Dashboard() {
             {`Hi ${session?.user?.name}! Here is your Schedule for Week 1:`}
           </h1>
         </div>
-        <DynamicCalendar session={session} slots={slots}/>
+        <div className="mt-12">
+          <Calendar session={session} slots={slots}/>
+        </div>
       </div>
     </Layout>
   );
