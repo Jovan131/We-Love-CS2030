@@ -7,20 +7,72 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 
 
-function getSlots() {
-  return prisma.slot.findMany({
-    include: {
-      residents: {
-        select: { name: true, id: true }
-      }
-    }
-  })
-}
-
 // change back function to async
 export default async function Dashboard() {
-  const slots = await getSlots()
   const session = await getServerSession(authOptions)
+  const slots = await getSlots()
+
+  async function getSlots() {
+    const slots = await prisma.slot.findMany({
+      include: {
+        residents: {
+          select: { name: true, id: true }
+        }
+      }
+    })
+
+    const slotsWithUpdatedProperties = slots.map(async (slot) => {
+        const polled = await prisma.resident.findFirst({
+          where: {
+            AND: [
+              {
+                email: {
+                  equals: session?.user?.email!
+                },
+              },
+              {
+                slots: {
+                  some: {
+                    id: slot.id
+                  }
+                }
+              }
+            ]
+          }
+        })
+    
+        const subscribed = await prisma.resident.findFirst({
+          where: {
+            AND: [
+              {
+                email: {
+                  equals: session?.user?.email!
+                },
+              },
+              {
+                igs: {
+                  some: {
+                    name: slot?.igName
+                  }
+                }
+              }
+            ]
+          }
+        })
+    
+        if (polled && subscribed) {
+          return { ...slot, polled: true, subscribed: true }
+        } else if (polled && !subscribed) {
+          return { ...slot, polled: true, subscribed: false }
+        } else if (!polled && subscribed) {
+          return { ...slot, polled: false, subscribed: true }
+        } else {
+          return { ...slot, polled: false, subscribed: false }
+        }
+    })
+      
+    return await Promise.all(slotsWithUpdatedProperties)
+  }
 
   return (
     <Layout routeIndex={1}>

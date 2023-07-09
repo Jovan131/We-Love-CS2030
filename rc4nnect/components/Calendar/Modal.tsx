@@ -14,6 +14,8 @@ type AppProps = {
       duration: number;
       igName: string;
       residents: { name: string }[];
+      polled: boolean,
+      subscribed: boolean,  
   },
   isVisible: boolean,
   onClose: any,
