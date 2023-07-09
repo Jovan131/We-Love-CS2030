@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Slot from './Slot';
-import { prisma } from '@/app/db';
 
 type AppProps = {
   slots: {
@@ -11,6 +10,8 @@ type AppProps = {
     duration: number;
     igName: string;
     residents: { name: string, id: string }[];
+    polled: boolean,
+    subscribed: boolean,
   }[];
   session: any
 }
@@ -23,6 +24,8 @@ type SlotInfo = {
     duration: number;
     igName: string;
     residents: { name: string, id: string }[];
+    polled: boolean,
+    subscribed: boolean,
 }
 
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -60,46 +63,7 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
             <div className="text-center pt-[5px]">{day}</div>
             <div className="bg-gray-300 grid grid-cols-40">
               {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map(async (slot) => {  
-                
-                  const polled = await prisma.resident.findFirst({
-                    where: {
-                      AND: [
-                        {
-                          email: {
-                            equals: session.user.email
-                          },
-                        },
-                        {
-                          slots: {
-                            some: {
-                              id: slot.id
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  })
-
-                  const subscribed = await prisma.resident.findFirst({
-                    where: {
-                      AND: [
-                        {
-                          email: {
-                            equals: session.user.email
-                          },
-                        },
-                        {
-                          igs: {
-                            some: {
-                              name: slot?.igName
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  })
-                
-                return (<Slot key={slot.id} slotInfo={slot} session={session} color={getColor(slot, subscribed, polled)}/>)
+                return (<Slot key={slot.id} slotInfo={slot} session={session} color={getColor(slot, slot.subscribed, slot.polled)}/>)
               })}
             </div>
           </div>

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import React, { useState } from 'react';
 import Modal from "./Modal";
@@ -13,6 +13,8 @@ type AppProps = {
         duration: number;
         igName: string;
         residents: { name: string }[];
+        polled: boolean,
+        subscribed: boolean,    
     },
     session: any,
     color: string,
