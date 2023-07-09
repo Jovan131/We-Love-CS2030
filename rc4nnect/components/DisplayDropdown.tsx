@@ -55,11 +55,10 @@ const DisplayDropdown: React.FC<AppProps> = ({selectedOption, setSelectedOption}
         {isOpen && (
           <div className="absolute top-6 right-0 z-10 mt-4 min-w-[200px] origin-top-right rounded-md border border-gray-100 bg-white shadow-lg">
             {options.map((option) => (
-              <div>
+              <div key={Math.random()}>
                 <a
                   href="avascript:void(0)"
                   onClick={onOptionClicked(option)}
-                  key={Math.random()}
                   className="block rounded-lg px-4 py-2 text-sm text-gray-500 no-underline hover:bg-gray-50 hover:text-gray-700"
                 >
                   {option}

@@ -20,12 +20,12 @@ type AppProps = {
 }
 
 const DynamicCalendar: React.FC<AppProps> = ({session, slots}) => {
-  const [displayType, setDisplayType] = useState('Polled and subscribed')
+  const [selectedOption, setSelectedOption] = useState('Polled and subscribed')
 
   function getSlots() {
-    if (displayType === 'Polled') {
+    if (selectedOption === 'Polled') {
       return slots.filter((slot) => slot.polled)
-    } else if (displayType === 'Subscribed') {
+    } else if (selectedOption === 'Subscribed') {
       return slots.filter((slot) => slot.subscribed)
     } else {
       return slots
@@ -38,7 +38,7 @@ const DynamicCalendar: React.FC<AppProps> = ({session, slots}) => {
         <Calendar session={session} slots={getSlots()}/>
       </div>
       <div>
-        <DisplayDropdown selectedOption={displayType} setSelectedOption={setDisplayType}/>
+        <DisplayDropdown selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
       </div>
     </>
   );
