@@ -1,7 +1,6 @@
 'use client'
 
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SubscribeButton from '../Popup/SubscribeButton';
 import PollButton from '../Popup/PollButton';
 
@@ -23,38 +22,7 @@ type AppProps = {
 }
 
 const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
-  const [polled, setPolled] = useState(false)
-  const [subscribed, setSubscribed] = useState(false)
-
   if ( !isVisible ) return null;
-
-  const checkIfPolled = async () => {
-    await axios.post('/api/getPolled', {
-    email: session.user.email,
-    slotInfoID: slotInfo.id,
-  }).then((response) => {
-    if (response.data === null) {
-      setPolled(false)
-    } else {
-      setPolled(true)
-    }
-  })
-  }
-  checkIfPolled()
-
-  const checkIfSubscribed = async () => {
-    await axios.post('/api/getSubscribed', {
-    email: session.user.email,
-    slotInfoID: slotInfo.id,
-  }).then((response) => {
-    if (response.data === null) {
-      setSubscribed(false)
-    } else {
-      setSubscribed(true)
-    }
-  })
-  }
-  checkIfSubscribed()
 
   const handleClose = (e: any) => {
     if (e.target.id === 'wrapper' || e.target.id === 'inner-wrapper') onClose();
@@ -98,8 +66,8 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
             <span className='font-semibold'>Slots availability:</span> {slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
           </p>
           <div className='flex justify-between'>
-            <SubscribeButton subscribed={subscribed} slotID={slotInfo.id} email={session.user.email}/>
-            <PollButton polled={polled} slotID={slotInfo.id} email={session.user.email}/>
+            <SubscribeButton subscribed={slotInfo.subscribed} slotID={slotInfo.id} email={session.user.email}/>
+            <PollButton polled={slotInfo.polled} slotID={slotInfo.id} email={session.user.email}/>
           </div>
         </div>
       </div>

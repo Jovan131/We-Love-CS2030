@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Slot from './Slot';
-import { prisma } from '@/app/db';
 
 type AppProps = {
   slots: {

@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
-import Calendar from '@/components/Calendar/Calendar';
 import Layout from '@/components/Layout';
 import { prisma } from "@/app/db";
 import { Session, getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import { SessionContext } from 'next-auth/react';
-import DisplayDropdown from '@/components/DisplayDropdown';
+import DynamicCalendar from './DynamicCalendar';
 
 // Only find the slots that contain our current user OR slot.ig.members contains our current user
 async function getSlots(session: Session) {
@@ -111,12 +109,7 @@ export default async function Dashboard() {
             {`Hi ${session?.user?.name}! Here is your Schedule for Week 1:`}
           </h1>
         </div>
-        <div className="mt-12">
-          <Calendar session={session} slots={slots}/>
-        </div>
-        <div>
-          <DisplayDropdown />
-        </div>
+        <DynamicCalendar session={session} slots={slots}/>
       </div>
     </Layout>
   );

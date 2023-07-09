@@ -2,11 +2,15 @@
 
 import React, { useState } from 'react';
 
-export default function DisplayDropdown() {
+type AppProps = {
+  selectedOption: any,
+  setSelectedOption: any,
+}
+
+const DisplayDropdown: React.FC<AppProps> = ({selectedOption, setSelectedOption}) => {
   const options = ['Polled', 'Subscribed', 'Polled and subscribed'];
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null)
   const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (value) => () => {
@@ -22,7 +26,7 @@ export default function DisplayDropdown() {
           onClick={toggling}
           className="w-[100%] rounded-l-md px-4 py-2 text-sm text-gray-600 no-underline hover:bg-gray-50 hover:text-gray-700"
         >
-          {selectedOption || 'Select Technology'}
+          {selectedOption}
         </a>
         <div className="relative">
           <button
@@ -68,3 +72,5 @@ export default function DisplayDropdown() {
     </div>
   );
 }
+
+export default DisplayDropdown
