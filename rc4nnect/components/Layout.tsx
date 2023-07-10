@@ -11,7 +11,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <div className="flex min-h-screen bg-slate-900 text-white">
       <Sidebar routeIndex={routeIndex} />
-      <div className="h-screen flex-1 p-7">
+      <div className="min-h-screen flex-1 p-7">
         {children}
       </div>
 
