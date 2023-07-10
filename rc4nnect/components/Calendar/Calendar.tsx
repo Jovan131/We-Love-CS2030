@@ -59,7 +59,7 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
       </div>
       <div>
         {daysOfWeek.map((day, index) => (
-          <div key={index} className="grid grid-cols-[50px_auto] pb-2">
+          <div key={index} className="grid grid-cols-[50px_auto] min-h-[45px] mb-2">
             <div className="text-center pt-[5px]">{day}</div>
             <div className="bg-gray-300 grid grid-cols-40">
               {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => {  

@@ -5,6 +5,8 @@ import Layout from '@/components/Layout';
 import { prisma } from "@/app/db";
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
+import DynamicCalendar from '../dashboard/DynamicCalendar';
+import FilterableCalendar from './FilterableCalendar';
 
 
 // change back function to async
@@ -80,9 +82,7 @@ export default async function Dashboard() {
         <div>
           <h1 className="text-center font-bold text-4xl justify-center items-center mt-40">Week 1: All IGs</h1>
         </div>
-        <div className="mt-12">
-            <Calendar session={session} slots={slots}/>
-        </div>
+        <FilterableCalendar session={session} slots={slots}/>
       </div>
     </Layout>
   );
