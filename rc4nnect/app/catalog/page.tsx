@@ -1,25 +1,23 @@
 import React from 'react'
 import Layout from '@/components/Layout';
-import Container from '@/components/Catalog/Container';
+import DynamicCatalog from '@/components/Catalog/DynamicCatalog';
 import Filter from '@/components/Catalog/Filter';
-import { prisma } from "@/app/db";
+import { prisma } from '../db';
 import { useState } from 'react';
+import Search from '@/components/Catalog/Search';
 
-function getIg(category: string) {
+async function getIg() {
     return prisma.iG.findMany({
-        where: {
-            category: category,
-        }   
     })
 }
 
 
 export default async function page() {
-    const ig = await getIg("Sports")
+    const ig = await getIg()
     return (
         <Layout routeIndex={4}>
-            <Filter />
-            <Container igInfos={ig}/>
+
+            <DynamicCatalog igInfos={ig}/>
 
         </Layout>
       );

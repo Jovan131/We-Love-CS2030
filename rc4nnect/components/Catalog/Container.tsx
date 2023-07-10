@@ -1,5 +1,4 @@
 import Card from "./Card"
-import { prisma } from "@/app/db";
 
 type AppProps = {
     igInfos: {
@@ -8,14 +7,6 @@ type AppProps = {
         category: string,
         numOfSessionsPerWeek: number,
     }[],
-}
-
-function getIg(category: string) {
-    return prisma.iG.findMany({
-        where: {
-            category: category,
-        }   
-    })
 }
 
 const Container: React.FC<AppProps> = ({igInfos}) => {
@@ -27,4 +18,4 @@ const Container: React.FC<AppProps> = ({igInfos}) => {
     )
 }
 
-export default Container
+export default Container;
