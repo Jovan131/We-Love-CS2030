@@ -1,6 +1,5 @@
 import React from 'react';
 import Slot from './Slot';
-import { Session } from 'next-auth';
 
 type AppProps = {
   slots: {
@@ -10,28 +9,62 @@ type AppProps = {
     startDateTime: Date;
     duration: number;
     igName: string;
-    residents: { name: string }[];
+    residents: { name: string, id: string }[];
+    polled: boolean,
+    subscribed: boolean,
   }[];
   session: any
+}
+
+type SlotInfo = {
+  id: string;
+    capacity: any; 
+    venue: string;
+    startDateTime: Date;
+    duration: number;
+    igName: string;
+    residents: { name: string, id: string }[];
+    polled: boolean,
+    subscribed: boolean,
 }
 
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 const timeSlots = ["1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"];
 
+
+
 const Calendar: React.FC<AppProps> = ({slots, session}) => {
+  function getColor(slotInfo: SlotInfo, subscribed: any, polled: any) {
+    const positionInList = slotInfo.residents.findIndex((resident) => resident.id === session.user.id) + 1
+  
+    if (slotInfo.residents.length <= slotInfo.capacity && !polled) {
+      return 'bg-green-600 hover:bg-green-800 border-solid border-green-900 rounded-b-md border-b-4'
+    } else if (subscribed && !polled) {
+      return 'bg-rose-600 hover:bg-rose-800 border-solid border-rose-900 rounded-b-md border-b-4'
+    } else if (polled && positionInList <= slotInfo.capacity) {
+      return 'bg-blue-600 hover:bg-blue-800 border-solid border-blue-900 rounded-b-md border-b-4'
+    } else if (polled) {
+      return 'bg-orange-600 hover:bg-orange-800 border-solid border-orange-900 rounded-b-md border-b-4'
+    } else {
+      return ''
+    }
+  }
+
   return (
-    <div className="calendar-container">
-      <div className="header">
-        <ul className="timeslots" style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: 'repeat(10, minmax(0, 1fr))', marginLeft: '30px', marginRight: '20px' }}>
+    <div>
+      <div>
+        <ul className="list-none grid grid-cols-10 mr-5 ml-[30px]">
           {timeSlots.map((timeSlot) => <li key={timeSlot}>{timeSlot}</li>)}
         </ul>
       </div>
-      <div className="main">
+      <div>
         {daysOfWeek.map((day, index) => (
-          <div key = {index} className="main-row" style={{ display: 'grid', gridTemplateColumns: '50px auto', gridTemplateAreas: '"days-of-week slots-row"', paddingBottom: '10px' }}>
-            <div className="days-of-week" style={{ textAlign: 'center', paddingTop: '5px' }}>{day}</div>
-            <div className="slots-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(40, minmax(0, 1fr))', gridTemplateRows: '34.8px', background: 'lightgray'}}>
-              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => <Slot key={slot.id} slotInfo={slot} session={session}/>)}
+          <div key={index} className="grid grid-cols-[50px_auto] min-h-[45px] mb-2">
+            <div className="text-center pt-[5px]">{day}</div>
+            <div className="bg-gray-300 grid grid-cols-40">
+              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => {  
+                return (<Slot key={slot.id} slotInfo={slot} session={session} color={getColor(slot, slot.subscribed, slot.polled)}/>)
+              })}
             </div>
           </div>
         ))}
