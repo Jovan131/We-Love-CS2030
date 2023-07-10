@@ -62,7 +62,7 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
           <div key={index} className="grid grid-cols-[50px_auto] h-12 pb-2">
             <div className="text-center pt-[5px]">{day}</div>
             <div className="bg-gray-300 grid grid-cols-40">
-              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map(async (slot) => {  
+              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => {  
                 return (<Slot key={slot.id} slotInfo={slot} session={session} color={getColor(slot, slot.subscribed, slot.polled)}/>)
               })}
             </div>

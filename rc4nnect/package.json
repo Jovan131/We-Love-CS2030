@@ -19,6 +19,8 @@
     "dotenv": "^16.0.3",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
+    "flowbite": "^1.7.0",
+    "flowbite-react": "^0.4.10",
     "next": "13.4.3",
     "next-auth": "^4.22.1",
     "postcss": "8.4.23",
