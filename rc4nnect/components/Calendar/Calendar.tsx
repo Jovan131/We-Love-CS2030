@@ -38,13 +38,13 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
     const positionInList = slotInfo.residents.findIndex((resident) => resident.id === session.user.id) + 1
   
     if (slotInfo.residents.length <= slotInfo.capacity && !polled) {
-      return 'bg-green-600 hover:bg-green-800'
+      return 'bg-green-600 hover:bg-green-800 border-solid border-green-900 rounded-b-md border-b-4'
     } else if (subscribed && !polled) {
-      return 'bg-rose-600 hover:bg-rose-800'
+      return 'bg-rose-600 hover:bg-rose-800 border-solid border-rose-900 rounded-b-md border-b-4'
     } else if (polled && positionInList <= slotInfo.capacity) {
-      return 'bg-blue-600 hover:bg-blue-800'
+      return 'bg-blue-600 hover:bg-blue-800 border-solid border-blue-900 rounded-b-md border-b-4'
     } else if (polled) {
-      return 'bg-orange-600 hover:bg-orange-800'
+      return 'bg-orange-600 hover:bg-orange-800 border-solid border-orange-900 rounded-b-md border-b-4'
     } else {
       return ''
     }
@@ -59,7 +59,7 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
       </div>
       <div>
         {daysOfWeek.map((day, index) => (
-          <div key={index} className="grid grid-cols-[50px_auto] h-12 pb-2">
+          <div key={index} className="grid grid-cols-[50px_auto] pb-2">
             <div className="text-center pt-[5px]">{day}</div>
             <div className="bg-gray-300 grid grid-cols-40">
               {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => {  

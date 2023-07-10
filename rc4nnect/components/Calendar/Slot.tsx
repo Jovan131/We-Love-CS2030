@@ -28,8 +28,8 @@ const Slot: React.FC<AppProps> = ({slotInfo, session, color}) => {
 
     return (
         <>
-            <div className={`row-start-1 row-end-2 ${color} 
-            rounded z-[5] py-2 text-center mx-px cursor-pointer`} 
+            <div className={`${color} 
+            rounded z-[5] mb-px py-2 text-center mx-px cursor-pointer`} 
             style={{gridColumnStart: colStartValue, gridColumnEnd: colEndValue}}
             key={slotInfo.id} 
             onClick={() => setShowModal(true)}>
