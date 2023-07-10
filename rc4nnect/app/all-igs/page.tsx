@@ -19,6 +19,9 @@ export default async function Dashboard() {
       include: {
         residents: {
           select: { name: true, id: true }
+        },
+        ig: {
+          select: { category: true }
         }
       }
     })
@@ -80,7 +83,7 @@ export default async function Dashboard() {
     <Layout routeIndex={1}>
       <div>
         <div>
-          <h1 className="text-center font-bold text-4xl justify-center items-center mt-40">Week 1: All IGs</h1>
+          <h1 className="text-center font-bold text-4xl justify-center items-center mt-14">Week 1: All IGs</h1>
         </div>
         <FilterableCalendar session={session} slots={slots}/>
       </div>
