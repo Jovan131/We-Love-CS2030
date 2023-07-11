@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import SubscribeButton from '../Popup/SubscribeButton';
+import SlotSubscribeButton from '../Popup/SlotSubscribeButton';
 import PollButton from '../Popup/PollButton';
 
 type AppProps = {
@@ -66,7 +66,7 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
             <span className='font-semibold'>Slots availability:</span> {slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
           </p>
           <div className='flex justify-between'>
-            <SubscribeButton subscribed={slotInfo.subscribed} slotID={slotInfo.id} email={session.user.email}/>
+            <SlotSubscribeButton subscribed={slotInfo.subscribed} slotID={slotInfo.id} email={session.user.email}/>
             <PollButton polled={slotInfo.polled} slotID={slotInfo.id} email={session.user.email}/>
           </div>
         </div>
