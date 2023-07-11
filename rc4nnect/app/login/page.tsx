@@ -51,7 +51,7 @@ export default function LoginPage() {
 
   return (
 
-      <div className="App flex items-center justify-center h-screen bg-slate-900">
+      <div className="App flex items-center justify-center h-screen bg-slate-900 select-none">
         <div className="text-center">
           <Image
             className="mx-auto mb-10"
@@ -73,7 +73,7 @@ export default function LoginPage() {
                 placeholder="Password"
                 onChange={(e) => (pass.current = e.target.value)}
               />
-              <div className='text-2xl absolute top-1 right-2'>
+              <div className='text-2xl absolute top-2 right-2'>
                 {
                   (showPassword === false) ? <AiFillEye onClick={toggle} /> : 
                   <AiFillEyeInvisible onClick={toggle} />
