@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function settings() {
     return (
-        <Layout routeIndex={3}>
+        <Layout routeIndex={4}>
           <div> Coming soon! </div>
         </Layout>
   )

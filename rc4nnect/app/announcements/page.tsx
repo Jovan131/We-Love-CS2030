@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function announcements() {
     return (
-        <Layout routeIndex={2}>
+        <Layout routeIndex={3}>
           <div> Coming soon! </div>
         </Layout>
   )

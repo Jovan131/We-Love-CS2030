@@ -15,9 +15,9 @@ export default function Sidebar({ routeIndex }: AppProps) {
   const Menus = [
     { title: "My Dashboard", src: "Calendar", redirectURL: "/dashboard" },
     { title: "Browse All IGs", src: "Search", gap: true, redirectURL: "/all-igs" },
+    { title: "IG Catalog ", src: "Catalog", redirectURL: "/catalog" },
     { title: "Announcements ", src: "Chat", redirectURL: "/announcements" },
     { title: "Settings ", src: "Settings", gap: true, redirectURL: "/settings" },
-    { title: "IG Catalog ", src: "Catalog", bigGap: true, redirectURL: "/catalog" },
     { title: "Logout ", src: "logout", bigGap: true, redirectURL: "/logout" },
 
   ];
@@ -55,7 +55,7 @@ export default function Sidebar({ routeIndex }: AppProps) {
           <li
             key={index}
             className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-            ${Menu.gap ? "mt-9" : "mt-2"} ${Menu.bigGap ? "mt-[21.2rem]" : ""} ${
+            ${Menu.gap ? "mt-9" : "mt-2"} ${Menu.bigGap ? "mt-72" : ""} ${
               index === routeIndex && "bg-light-white"
             } `}
             onClick={() => {

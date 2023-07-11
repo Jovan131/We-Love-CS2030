@@ -14,7 +14,7 @@ async function getIg() {
 export default async function page() {
     const ig = await getIg()
     return (
-        <Layout routeIndex={4}>
+        <Layout routeIndex={2}>
 
             <DynamicCatalog igInfos={ig}/>
 
