@@ -51,8 +51,8 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
   }
 
   return (
-    <div>
-      <div>
+    <div className='overflow-x-auto'>
+      <div className='min-w-[950px]'>
         <ul className="list-none grid grid-cols-10 mr-5 ml-[30px]">
           {timeSlots.map((timeSlot) => <li key={timeSlot}>{timeSlot}</li>)}
         </ul>
@@ -60,8 +60,10 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
       <div>
         {daysOfWeek.map((day, index) => (
           <div key={index} className="grid grid-cols-[50px_auto] min-h-[45px] mb-2">
-            <div className="text-center pt-[5px]">{day}</div>
-            <div className="bg-gray-300 grid grid-cols-40">
+            <div className='flex items-center justify-end bg-slate-900 sticky left-[-1px] z-20 '>
+              <div className="text-center align-middle mr-2">{day}</div>
+            </div>
+            <div className="bg-gray-300 grid grid-cols-40 min-w-[900px] mt-[1px]">
               {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => {  
                 return (<Slot key={slot.id} slotInfo={slot} session={session} color={getColor(slot, slot.subscribed, slot.polled)}/>)
               })}
