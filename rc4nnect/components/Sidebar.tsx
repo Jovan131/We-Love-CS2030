@@ -17,7 +17,9 @@ export default function Sidebar({ routeIndex }: AppProps) {
     { title: "Browse All IGs", src: "Search", gap: true, redirectURL: "/all-igs" },
     { title: "Announcements ", src: "Chat", redirectURL: "/announcements" },
     { title: "Settings ", src: "Settings", gap: true, redirectURL: "/settings" },
+    { title: "IG Catalog ", src: "Catalog", bigGap: true, redirectURL: "/catalog" },
     { title: "Logout ", src: "logout", bigGap: true, redirectURL: "/logout" },
+
   ];
   const router = useRouter()
 
