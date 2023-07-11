@@ -4,7 +4,7 @@ import React from 'react';
 import 'tailwindcss/tailwind.css';
 
 
-export default async function Dashboard() {
+export default async function Profile() {
   const session = await getServerSession(authOptions)
 
   return (
@@ -23,14 +23,14 @@ export default async function Dashboard() {
           <h3 className='bg-gray-200 text-black rounded py-4 px-2 text-xl'>{session?.user?.email}</h3>
         </div>
         <div className='mb-16'>
-          <h1 className='text-3xl mb-2'>Roles</h1>
+          <h1 className='text-3xl mb-2'>{"Roles (NOT LIVE YET, THIS IS JUST DUMMY DATA)"}</h1>
           <div className='bg-gray-200 text-black rounded py-2 px-2 flex justify-start'>
             <div className="bg-green-100 text-xl text-black font-medium mr-2 px-2.5 py-2 w-fit rounded-full dark:bg-gray-700 dark:text-green-400 border border-green-400">RC4 Resident</div>
             <div className="bg-yellow-100 text-xl text-black font-medium mr-2 px-2.5 py-2 w-fit rounded-full dark:bg-yellow-900 dark:text-yellow-300">Badminton IG Head</div>
           </div>
         </div>
         <div className='flex justify-end'>
-        <button type="button" className="focus:outline-none text-xl text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg px-5 py-2.5 dark:focus:ring-yellow-900">Change password</button>
+        <button type="button" className="focus:outline-none text-xl text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg px-5 py-2.5 dark:focus:ring-yellow-900">{"Change password (NOT WORKING YET)"}</button>
         </div>
       </div>
     </div>

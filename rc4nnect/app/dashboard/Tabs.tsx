@@ -14,7 +14,7 @@ export default function Tabs() {
           <Link href="/dashboard/schedule"><div className={`cursor-pointer inline-block p-4 rounded-t-lg ${pathName==='/dashboard/schedule' ? 'text-blue-600 bg-gray-100' : 'hover:text-gray-600 hover:bg-gray-50'} dark:bg-gray-800 dark:text-blue-500`}>Weekly Schedule</div></Link>
         </li>
         <li className="mr-2">
-          <div className="cursor-pointer inline-block p-4 rounded-t-lg dark:hover:bg-gray-800 dark:hover:text-gray-300">Manage Subscribed IGs</div>
+          <Link href="/dashboard/subscribed-igs"><div className={`cursor-pointer inline-block p-4 rounded-t-lg ${pathName==='/dashboard/subscribed-igs' ? 'text-blue-600 bg-gray-100' : 'hover:text-gray-600 hover:bg-gray-50'} dark:bg-gray-800 dark:text-blue-500`}>Manage Subscribed IGs</div></Link>
         </li>
         <li className="mr-2">
           <Link href="/dashboard/profile"><div className={`cursor-pointer inline-block p-4 rounded-t-lg ${pathName==='/dashboard/profile' ? 'text-blue-600 bg-gray-100' : 'hover:text-gray-600 hover:bg-gray-50'} dark:hover:bg-gray-800 dark:hover:text-gray-300`}>Profile</div></Link>

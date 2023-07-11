@@ -4,7 +4,6 @@ import DynamicCatalog from '@/components/Catalog/DynamicCatalog';
 import Filter from '@/components/Catalog/Filter';
 import { prisma } from '../db';
 import { useState } from 'react';
-import Search from '@/components/Catalog/Search';
 
 async function getIg() {
     return prisma.iG.findMany({
