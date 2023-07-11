@@ -40,7 +40,7 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
   }
 
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm flex justify-center items-center z-10'
+    <div className='fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm flex justify-center items-center z-30'
     id='wrapper' onClick={handleClose}>
       <div className='w-[600px] flex flex-col' id='inner-wrapper'>
         <button className='text-white text-xl place-self-end' onClick={() => onClose()}>X</button>
