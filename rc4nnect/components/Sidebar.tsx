@@ -37,7 +37,7 @@ export default function Sidebar({ routeIndex }: AppProps) {
       />
       <div className="flex gap-x-4 items-center">
         <img
-          src="./logo.svg"
+          src="/logo.svg"
           className={`w-[40px] h-[40px] cursor-pointer duration-500 ${
             open && "rotate-[360deg]"
           }`}
@@ -68,7 +68,7 @@ export default function Sidebar({ routeIndex }: AppProps) {
               }
             }}
           >
-            <img src={`./images/${Menu.src}.png`} />
+            <img src={`/images/${Menu.src}.png`} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               {Menu.title}
             </span>
