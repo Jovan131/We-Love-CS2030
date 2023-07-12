@@ -39,7 +39,7 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
   
     if (slotInfo.residents.length <= slotInfo.capacity && !polled) {
       return 'bg-green-600 hover:bg-green-800 border-solid border-green-900 rounded-b-md border-b-4'
-    } else if (subscribed && !polled) {
+    } else if (!polled) {
       return 'bg-rose-600 hover:bg-rose-800 border-solid border-rose-900 rounded-b-md border-b-4'
     } else if (polled && positionInList <= slotInfo.capacity) {
       return 'bg-blue-600 hover:bg-blue-800 border-solid border-blue-900 rounded-b-md border-b-4'
