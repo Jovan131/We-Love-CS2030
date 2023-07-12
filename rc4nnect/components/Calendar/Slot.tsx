@@ -12,7 +12,7 @@ type AppProps = {
         startDateTime: Date;
         duration: number;
         igName: string;
-        residents: { name: string }[];
+        residents: { name: string, id: string }[];
         polled: boolean,
         subscribed: boolean,    
     },
