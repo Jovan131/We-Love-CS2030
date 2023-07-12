@@ -60,9 +60,8 @@ export default function Sidebar({ routeIndex }: AppProps) {
             } `}
             onClick={() => {
               if (Menu.redirectURL === '/logout') {
-                signOut()
+                signOut({ callbackUrl: '/login' })
                 toast.success('Logged out successfully')
-                router.push('/login')        
               } else {
                 router.push(Menu.redirectURL)
               }
