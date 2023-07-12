@@ -100,11 +100,6 @@ export default async function Schedule() {
 
   return (
     <>
-      <div>
-        <h1 className="text-center font-bold text-4xl justify-center items-center mt-24">
-          {`Hi ${session?.user?.name}! Here is your Schedule for Week 1:`}
-        </h1>
-      </div>
       <DynamicCalendar session={session} slots={slots} />
     </>
   );
