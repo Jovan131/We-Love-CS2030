@@ -2,6 +2,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import React from 'react';
 import 'tailwindcss/tailwind.css';
+import ChangePassword from './ChangePassword';
 
 
 export default async function Profile() {
@@ -30,7 +31,7 @@ export default async function Profile() {
           </div>
         </div>
         <div className='flex justify-end'>
-        <button type="button" className="focus:outline-none text-xl text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg px-5 py-2.5 dark:focus:ring-yellow-900">{"Change password (NOT WORKING YET)"}</button>
+          <ChangePassword userEmail={session?.user?.email!}/>
         </div>
       </div>
     </div>
