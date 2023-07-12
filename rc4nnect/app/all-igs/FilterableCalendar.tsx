@@ -5,6 +5,9 @@ import React, { useState } from 'react';
 import FilterByCategory from './FilterByCategory';
 import FilterByVenue from './FilterByVenue';
 import FilterOnlyOpenSlots from './FilterOnlyOpenSlots';
+import weekInfo from '../../components/Calendar/WeekInfo';
+import LeftArrow from '../../components/Calendar/LeftArrow';
+import RightArrow from '../../components/Calendar/RightArrow';
 
 type AppProps = {
   slots: {
@@ -26,6 +29,7 @@ export default function FilterableCalendar({ session, slots }: AppProps) {
   const [displayedCategories, setDisplayedCategories] = useState(['Arts', 'Cogpods', 'Community Service', 'Lifestyle', 'Sports'])
   const [displayedVenues, setDisplayedVenues] = useState(['MPSH', 'SR1-SR6', 'USC', 'Others'])
   const [displayOnlyOpenSlots, setDisplayOnlyOpenSlots] = useState(false)
+  const [weekIndex, setWeekIndex] = useState(0)
 
   function getSlots() {
     const filteredSlots = slots.filter((slot) => displayedCategories.includes(slot.ig.category))
@@ -38,6 +42,7 @@ export default function FilterableCalendar({ session, slots }: AppProps) {
         return displayedVenues.includes('Others')
       }
     })
+    .filter((slot) => (slot.startDateTime >= weekInfo[weekIndex].startDate && slot.startDateTime <= weekInfo[weekIndex].endDate))
 
     if (displayOnlyOpenSlots) {
       return filteredSlots.filter((slot) => slot.residents.length <= slot.capacity)
@@ -48,6 +53,11 @@ export default function FilterableCalendar({ session, slots }: AppProps) {
 
   return (
     <>
+      <div className='flex justify-center items-center mt-14'>
+        <LeftArrow weekIndex={weekIndex} setWeekIndex={setWeekIndex}/>
+        <h1 className="text-center font-bold text-4xl select-none">{weekInfo[weekIndex].weekName}: All IGs</h1>
+        <RightArrow weekIndex={weekIndex} setWeekIndex={setWeekIndex}/>
+      </div>
       <div className="mt-12">
         <Calendar session={session} slots={getSlots()}/>
       </div>
