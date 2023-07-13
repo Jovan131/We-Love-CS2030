@@ -5,6 +5,7 @@ import { redirect } from 'next/dist/server/api-utils';
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { usePathname, useRouter } from 'next/navigation'
+import Image from 'next/image';
 
 export default function Sidebar() {
   const pathName = usePathname()
@@ -17,14 +18,16 @@ export default function Sidebar() {
         open ? "w-72" : "w-20 "
       } bg-dark-purple h-screen p-5 pt-8 sticky top-0 duration-300`}
     >
-      <img
+      <Image
+        alt='control'
         src="/images/control.png"
         className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
           border-2 rounded-full  ${!open && "rotate-180"}`}
         onClick={() => setOpen(!open)}
       />
       <div className="flex gap-x-4 items-center">
-        <img
+        <Image
+          alt='rc4nnect logo'
           src="/logo.svg"
           className={`w-[40px] h-[40px] cursor-pointer duration-500 ${
             open && "rotate-[360deg]"
@@ -46,7 +49,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/dashboard')}}
           >
-            <img src={`/images/Calendar.png`} />
+            <Image src={`/images/Calendar.png`} alt='Dashboard' />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               My Dashboard
             </span>
@@ -58,7 +61,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/all-igs')}}
           >
-            <img src={`/images/Search.png`} />
+            <Image src={`/images/Search.png`} alt='Browse all IGs' />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Browse All IGs
             </span>
@@ -70,7 +73,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/catalog')}}
           >
-            <img src={`/images/Catalog.png`} />
+            <Image src={`/images/Catalog.png`} alt='ig catalog' />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               IG Catalog
             </span>
@@ -82,7 +85,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/announcements')}}
           >
-            <img src={`/images/Chat.png`} />
+            <Image src={`/images/Chat.png`} alt='Annonucements' />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Annonucements
             </span>
@@ -94,7 +97,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/settings')}}
           >
-            <img src={`/images/Settings.png`} />
+            <Image src={`/images/Settings.png`} alt='Settings' />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Settings
             </span>
@@ -107,7 +110,7 @@ export default function Sidebar() {
             toast.success('Logged out successfully')
           }}
         >
-          <img src={`/images/logout.png`} />
+          <Image src={`/images/logout.png`} alt='logout' />
           <span className={`${!open && "hidden"} origin-left duration-200`}>
             Logout
           </span>
