@@ -35,7 +35,7 @@ export default function IGSubscribeButtonModal({ props, igName, subscribed, emai
               }) 
               props.setOpenModal(undefined)
             }}>
-              Yes, I&apos'm sure
+              Yes, I&apos;m sure
             </Button>
             <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
               No, cancel
