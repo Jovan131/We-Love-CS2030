@@ -4,13 +4,15 @@ import { signOut } from 'next-auth/react';
 import { redirect } from 'next/dist/server/api-utils';
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 type AppProps = {
   routeIndex: number
 }
 
 export default function Sidebar({ routeIndex }: AppProps) {
+  const pathName = usePathname()
+
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "My Dashboard", src: "Calendar", redirectURL: "/dashboard" },
@@ -50,30 +52,86 @@ export default function Sidebar({ routeIndex }: AppProps) {
           rc4nnect
         </h1>
       </div>
-      <ul className="pt-6">
-        {Menus.map((Menu, index) => (
-          <li
-            key={index}
-            className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-            ${Menu.gap ? "mt-9" : "mt-2"} ${Menu.bigGap ? "mt-72" : ""} ${
-              index === routeIndex && "bg-light-white"
+      <div className="pt-6 flex flex-col justify-between h-full">
+        <div>
+          <div
+            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2 ${
+              pathName.startsWith('/dashboard') && "bg-light-white"
             } `}
-            onClick={() => {
-              if (Menu.redirectURL === '/logout') {
-                signOut({ callbackUrl: '/login' })
-                toast.success('Logged out successfully')
-              } else {
-                router.push(Menu.redirectURL)
-              }
-            }}
+            onClick={() => {router.push('/dashboard')}}
           >
-            <img src={`/images/${Menu.src}.png`} />
+            <img src={`/images/Calendar.png`} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
-              {Menu.title}
+              My Dashboard
             </span>
-          </li>
-        ))}
-      </ul>
+          </div>
+
+          <div
+            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
+              pathName === '/all-igs' && "bg-light-white"
+            } `}
+            onClick={() => {router.push('/all-igs')}}
+          >
+            <img src={`/images/Search.png`} />
+            <span className={`${!open && "hidden"} origin-left duration-200`}>
+              Browse All IGs
+            </span>
+          </div>
+
+          <div
+            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
+              pathName === '/catalog' && "bg-light-white"
+            } `}
+            onClick={() => {router.push('/catalog')}}
+          >
+            <img src={`/images/Catalog.png`} />
+            <span className={`${!open && "hidden"} origin-left duration-200`}>
+              IG Catalog
+            </span>
+          </div>
+
+          <div
+            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
+              pathName === '/announcements' && "bg-light-white"
+            } `}
+            onClick={() => {router.push('/announcements')}}
+          >
+            <img src={`/images/Chat.png`} />
+            <span className={`${!open && "hidden"} origin-left duration-200`}>
+              Annonucements
+            </span>
+          </div>
+
+          <div
+            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
+              pathName === '/settings' && "bg-light-white"
+            } `}
+            onClick={() => {router.push('/settings')}}
+          >
+            <img src={`/images/Settings.png`} />
+            <span className={`${!open && "hidden"} origin-left duration-200`}>
+              Settings
+            </span>
+          </div>
+        </div>
+        <div
+          className={"flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mb-12"}
+          onClick={() => {
+            signOut({ callbackUrl: '/login' })
+            toast.success('Logged out successfully')
+          }}
+        >
+          <img src={`/images/logout.png`} />
+          <span className={`${!open && "hidden"} origin-left duration-200`}>
+            Logout
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
+
+// if (Menu.redirectURL === '/logout') {
+//   signOut({ callbackUrl: '/login' })
+//   toast.success('Logged out successfully')
+// }
