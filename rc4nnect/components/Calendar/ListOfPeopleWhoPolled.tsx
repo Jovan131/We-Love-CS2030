@@ -18,7 +18,7 @@ export default function ListOfPeopleWhoPolled({ residentsList }: AppProps) {
           </div>
         )
       })} placement='right' trigger='click' className='bg-green-500'>
-      <span className='font-medium text-base text-blue-600 dark:text-blue-500 select-none'>See who else is going:</span>
+      <span className='font-medium text-base text-blue-600 dark:text-blue-500 select-none'>Click to see who else is going:</span>
     </Tooltip>
   )
 }
