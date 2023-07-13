@@ -6,23 +6,9 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { usePathname, useRouter } from 'next/navigation'
 
-type AppProps = {
-  routeIndex: number
-}
-
-export default function Sidebar({ routeIndex }: AppProps) {
+export default function Sidebar() {
   const pathName = usePathname()
-
   const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "My Dashboard", src: "Calendar", redirectURL: "/dashboard" },
-    { title: "Browse All IGs", src: "Search", gap: true, redirectURL: "/all-igs" },
-    { title: "IG Catalog ", src: "Catalog", redirectURL: "/catalog" },
-    { title: "Announcements ", src: "Chat", redirectURL: "/announcements" },
-    { title: "Settings ", src: "Settings", gap: true, redirectURL: "/settings" },
-    { title: "Logout ", src: "logout", bigGap: true, redirectURL: "/logout" },
-
-  ];
   const router = useRouter()
 
   return (
@@ -130,8 +116,3 @@ export default function Sidebar({ routeIndex }: AppProps) {
     </div>
   );
 }
-
-// if (Menu.redirectURL === '/logout') {
-//   signOut({ callbackUrl: '/login' })
-//   toast.success('Logged out successfully')
-// }

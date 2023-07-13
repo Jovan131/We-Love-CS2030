@@ -79,7 +79,7 @@ export default async function Dashboard() {
   }
 
   return (
-    <Layout routeIndex={1}>
+    <Layout>
       <div>
         <FilterableCalendar session={session} slots={slots}/>
       </div>

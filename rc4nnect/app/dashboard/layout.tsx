@@ -3,7 +3,7 @@ import Tabs from './Tabs'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Layout routeIndex={0}>
+    <Layout>
       <div>
         <Tabs />
         {children}

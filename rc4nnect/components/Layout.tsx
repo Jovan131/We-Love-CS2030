@@ -3,14 +3,13 @@ import Sidebar from './Sidebar';
 
 interface LayoutProps {
   children: ReactNode;
-  routeIndex: number
 }
 
 export default function Layout(props: LayoutProps) {
-  const { children, routeIndex } = props;
+  const { children } = props;
   return (
     <div className="flex min-h-screen bg-slate-900 text-white">
-      <Sidebar routeIndex={routeIndex} />
+      <Sidebar />
       <div className="min-h-screen flex-1 p-7 overflow-hidden">
         {children}
       </div>
