@@ -7,7 +7,6 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["jsonProtocol"]
 }
 
 datasource db {
@@ -20,9 +19,28 @@ model Resident {
   name     String
   email    String @unique
   password String
+
   slots    Slot[]
   igs      IG[]
+
+  active   Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  Token Token[]
+
   @@map("residents")
+}
+
+model Token {
+  id  Int @id @default(autoincrement())
+  token String @unique
+  activatedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  resident Resident @relation(fields: [userId], references: [id])
+  userId String
 }
 
 model Slot {

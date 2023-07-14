@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.16.1",
+    "@sendgrid/mail": "^7.7.0",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
@@ -46,5 +47,10 @@
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }

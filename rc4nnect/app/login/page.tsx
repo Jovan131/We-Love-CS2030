@@ -89,8 +89,14 @@ export default function LoginPage() {
                   </h2>
             </button>
           <div className="mt-4">
-            <button className="text-white underline" onClick={() => router.push('/register')}>
+            <button className="text-white underline hover:text-gray-400" onClick={() => router.push('/register')}>
               Don&apos;t have an account? Register here
+            </button>
+          </div>
+          
+          <div className="mt-4">
+            <button className="text-white underline hover:text-gray-400" onClick={() => router.push('/reset')}>
+              Forgot password?
             </button>
           </div>
         </div>

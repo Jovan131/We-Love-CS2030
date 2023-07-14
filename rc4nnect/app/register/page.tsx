@@ -26,7 +26,7 @@ function Register() {
     e.preventDefault()
     axios.post('/api/register', data)
     .then(() => {
-      toast.success('User has been registered!')
+      toast.success('Please check your email to activate your account!')
       router.push('/login')
     })
     .catch((error) => {
@@ -108,10 +108,11 @@ function Register() {
             </button>
           </form>
           <div className="mt-4">
-            <button className="text-white underline" onClick={() => router.push('/login')}>
+            <button className="text-white underline hover:text-gray-400" onClick={() => router.push('/login')}>
               Already have an account? Login here
             </button>
           </div>
+
         </div>
       </div>
 
