@@ -95,8 +95,8 @@ export default function LoginPage() {
           </div>
           
           <div className="mt-4">
-            <button className="text-white underline hover:text-gray-400" onClick={() => router.push('/reset')}>
-              Forgot password?
+            <button className="text-white underline hover:text-gray-400"> 
+              Forgot password? 
             </button>
           </div>
         </div>
