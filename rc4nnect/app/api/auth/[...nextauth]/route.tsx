@@ -35,6 +35,10 @@ export const authOptions: NextAuthOptions = {
           throw new Error('No such user found')
         }
 
+        if (!user.active) {
+          throw new Error('Please activate your account')
+        }
+
         const isPasswordValid = await compare(
           credentials.password,
           user.password
