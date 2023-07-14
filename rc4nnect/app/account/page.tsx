@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Logo from "public/logo.svg"
 import { toast } from 'react-hot-toast'
 
-export default function page() {
+export default function Account() {
     const router = useRouter()
     return (
 

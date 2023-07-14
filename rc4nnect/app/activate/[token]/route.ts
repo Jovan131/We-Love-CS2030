@@ -56,5 +56,5 @@ export async function GET(
     },
   })
 
-  redirect('/activate')
+  redirect('/account')
 }
