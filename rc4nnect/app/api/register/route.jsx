@@ -12,7 +12,7 @@ export async function POST(input) {
   const activeToken = `${randomUUID()}${randomUUID()}`.replace('-', '')
 
   const sgMail = require('@sendgrid/mail')
-  sgMail.setApiKey('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')
+  sgMail.setApiKey(process.env.SENDGRID_API)
   
   const verifyMsg = `Hello ${name}, please activate your account by clicking this link: https://we-love-cs-2030.vercel.app/activate/${activeToken}` //change link to production link (need to check Vercel config I am not sure yet)
 
