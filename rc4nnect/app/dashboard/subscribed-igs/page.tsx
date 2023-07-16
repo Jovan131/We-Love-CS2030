@@ -17,10 +17,17 @@ export default async function SubscribedIgs() {
           email: session?.user?.email!
         }
       }
+    },
+    include: {
+      members: {
+        select: { email: true }
+      }
     }
   })
 
   return (
-    <DynamicCatalog igInfos={subscribedIgs}/>
+    <DynamicCatalog igInfos={subscribedIgs.map((ig) => {
+      return {...ig, subscribed: true}
+    })} email={session?.user?.email!}/>
   );
 }   

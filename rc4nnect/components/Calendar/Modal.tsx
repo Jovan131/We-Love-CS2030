@@ -3,6 +3,7 @@
 import React from 'react';
 import SlotSubscribeButton from '../Popup/SlotSubscribeButton';
 import PollButton from '../Popup/PollButton';
+import ListOfPeopleWhoPolled from './ListOfPeopleWhoPolled';
 
 type AppProps = {
   slotInfo: {
@@ -12,7 +13,7 @@ type AppProps = {
       startDateTime: Date;
       duration: number;
       igName: string;
-      residents: { name: string }[];
+      residents: { name: string, id: string }[];
       polled: boolean,
       subscribed: boolean,  
   },
@@ -62,9 +63,13 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
           <p className='font-normal py-3'>
             <span className='font-semibold'>Venue:</span> {slotInfo.venue}
           </p>
-          <p className='font-normal py-3 mb-5'>
-            <span className='font-semibold'>Slots availability:</span> {slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
-          </p>
+          <div className='font-normal py-3 mb-8 flex justify-between'>
+            <div>
+              <span className='font-semibold'>Slots availability:</span> 
+              {" " + slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
+            </div>
+            <ListOfPeopleWhoPolled residentsList={slotInfo.residents}/>
+          </div>
           <div className='flex justify-between'>
             <SlotSubscribeButton subscribed={slotInfo.subscribed} slotID={slotInfo.id} email={session.user.email}/>
             <PollButton polled={slotInfo.polled} slotID={slotInfo.id} email={session.user.email}/>

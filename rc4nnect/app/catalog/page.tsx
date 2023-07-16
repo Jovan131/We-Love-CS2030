@@ -4,19 +4,31 @@ import DynamicCatalog from '@/components/Catalog/DynamicCatalog';
 import Filter from '@/components/Catalog/Filter';
 import { prisma } from '../db';
 import { useState } from 'react';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
-async function getIg() {
-    return prisma.iG.findMany({
-    })
-}
 
 
 export default async function page() {
+    async function getIg() {
+        const igs = await prisma.iG.findMany({
+            include: {
+                members: {
+                    select: { email: true }
+                }
+            }
+        })
+        return igs.map((ig) => {
+            return {...ig, subscribed: ig.members.map((obj) => obj.email).includes(session?.user?.email!)}
+        })
+    }
+
+    const session = await getServerSession(authOptions)
     const ig = await getIg()
     return (
-        <Layout routeIndex={2}>
+        <Layout>
 
-            <DynamicCatalog igInfos={ig}/>
+            <DynamicCatalog igInfos={ig} email={session?.user?.email!}/>
 
         </Layout>
       );

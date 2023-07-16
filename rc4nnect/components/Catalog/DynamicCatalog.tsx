@@ -10,10 +10,13 @@ type AppProps = {
         name: string,
         category: string,
         numOfSessionsPerWeek: number,
-    }[];
+        members: {email: string}[],
+        subscribed: boolean,
+    }[],
+    email: string
 }
 
-export default function DynamicCatalog({igInfos} : AppProps) {
+export default function DynamicCatalog({igInfos, email} : AppProps) {
     const [filtered, setFiltered] = useState("All");
 
     function changeFilter(newFilter: string) {
@@ -43,7 +46,7 @@ export default function DynamicCatalog({igInfos} : AppProps) {
         <div className='flex justify-center pt-5'>
           <Filter changeFilter={changeFilter} />
         </div>
-          <Container igInfos={getIGs()}/>
+          <Container igInfos={getIGs()} email={email} />
         </>
     )
 }
