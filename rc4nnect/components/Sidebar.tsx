@@ -21,7 +21,9 @@ export default function Sidebar() {
       <Image
         alt='control'
         src="/images/control.png"
-        className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
+        width={28}
+        height={28}
+        className={`absolute cursor-pointer -right-3 top-9 border-dark-purple
           border-2 rounded-full  ${!open && "rotate-180"}`}
         onClick={() => setOpen(!open)}
       />
@@ -29,7 +31,9 @@ export default function Sidebar() {
         <Image
           alt='rc4nnect logo'
           src="/logo.svg"
-          className={`w-[40px] h-[40px] cursor-pointer duration-500 ${
+          width={40}
+          height={40}
+          className={`cursor-pointer duration-500 ${
             open && "rotate-[360deg]"
           }`}
         />
@@ -49,7 +53,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/dashboard')}}
           >
-            <Image src={`/images/Calendar.png`} alt='Dashboard' />
+            <Image src={`/images/Calendar.png`} alt='Dashboard' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               My Dashboard
             </span>
@@ -61,7 +65,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/all-igs')}}
           >
-            <Image src={`/images/Search.png`} alt='Browse all IGs' />
+            <Image src={`/images/Search.png`} alt='Browse all IGs' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Browse All IGs
             </span>
@@ -73,7 +77,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/catalog')}}
           >
-            <Image src={`/images/Catalog.png`} alt='ig catalog' />
+            <Image src={`/images/Catalog.png`} alt='ig catalog' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               IG Catalog
             </span>
@@ -85,7 +89,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/announcements')}}
           >
-            <Image src={`/images/Chat.png`} alt='Annonucements' />
+            <Image src={`/images/Chat.png`} alt='Annonucements' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Annonucements
             </span>
@@ -97,7 +101,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/settings')}}
           >
-            <Image src={`/images/Settings.png`} alt='Settings' />
+            <Image src={`/images/Settings.png`} alt='Settings' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Settings
             </span>
@@ -110,7 +114,7 @@ export default function Sidebar() {
             toast.success('Logged out successfully')
           }}
         >
-          <Image src={`/images/logout.png`} alt='logout' />
+          <Image src={`/images/logout.png`} alt='logout' width={24} height={24} />
           <span className={`${!open && "hidden"} origin-left duration-200`}>
             Logout
           </span>
