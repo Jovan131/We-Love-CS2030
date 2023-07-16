@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
+import Select, { components, ValueContainerProps } from 'react-select'
 
 type AppProps = {
   changeDisplayType: any
 }
 
+const options = [
+  { value: 'both', label: 'Show both polled slots and subscribed IGs' },
+  { value: 'polled', label: 'Show only polled slots' },
+  { value: 'subscribed', label: 'Show only subscribed IGs' }
+]
+
 export default function DisplayDropdown({ changeDisplayType }: AppProps) {
   return (
-    <div>
+    <div className='w-[361px] pb-[116px]'>
       <label className="block mb-1 text-sm font-medium text-white dark:text-white">Filter:</label>
-      <select id="displayOnly" className="block w-full p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      onChange={(e) => changeDisplayType(e.target.value)}>
-        <option value="both">Show both polled slots and subscribed IGs</option>
-        <option value="polled">Show only polled slots</option>
-        <option value="subscribed">Show only subscribed IGs</option>
-      </select>
+      <div className='text-black'>
+        <Select 
+          classNames={{
+            valueContainer: () => 'text-sm',
+            menuList: () => 'text-sm',
+          }}
+          options={options} 
+          onChange={(e) => changeDisplayType(e?.value)}
+          className="basic-single"
+          defaultValue={options[0]}
+          isSearchable={false}
+        />
+      </div>
     </div>
   )
 }

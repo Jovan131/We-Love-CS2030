@@ -4,10 +4,8 @@ import Tabs from './Tabs'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <Layout>
-      <div>
-        <Tabs />
-        {children}
-      </div>
+      <Tabs />
+      {children}
     </Layout>
   )
 }
