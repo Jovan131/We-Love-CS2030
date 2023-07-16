@@ -5,7 +5,7 @@ import { randomUUID } from 'crypto'
 import { resolve } from 'path'
 
 
-export async function POST(input) {
+export async function POST(input: any) {
   const body = await input.json()
   const { name, email, password, confirmPassword } = body
 
@@ -58,7 +58,7 @@ export async function POST(input) {
   .then(() => {
     console.log('Email sent')
   })
-  .catch((error) => {
+  .catch((error: any) => {
     console.error(error)
   })
 
