@@ -64,8 +64,8 @@ export default function FilterableCalendar({ session, slots }: AppProps) {
       <div className='flex justify-between pt-5 gap-4 ml-[50px]'>
         <FilterOnlyOpenSlots displayOnlyOpenSlots={displayOnlyOpenSlots} setDisplayOnlyOpenSlots={setDisplayOnlyOpenSlots}/>
         <div className='flex gap-5'>
-          <FilterByVenue displayedVenues={displayedVenues} setDisplayedVenues={setDisplayedVenues}/>
-          <FilterByCategory displayedCategories={displayedCategories} setDisplayedCategories={setDisplayedCategories}/>
+          <FilterByVenue setDisplayedVenues={setDisplayedVenues}/>
+          <FilterByCategory setDisplayedCategories={setDisplayedCategories}/>
         </div>
       </div>
     </>
