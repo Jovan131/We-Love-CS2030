@@ -62,6 +62,22 @@ model IG {
   category             String
   numOfSessionsPerWeek Int    @map("num_of_sessions_per_week")
   slots                Slot[]
+  announcements        Announcement[]
   members              Resident[]
   @@map("igs")
+}
+
+model Announcement {
+  id            String     @default(cuid()) @id
+  title         String
+  content       String
+  createdDateTime DateTime   @default(now())
+  igName        String     @map("ig_name")
+  ig            IG         @relation(fields: [igName], references: [name])
+  @@map("announcements")
+}
+
+model SearchQuery {
+  id    String @id @default(cuid())
+  query String
 }
