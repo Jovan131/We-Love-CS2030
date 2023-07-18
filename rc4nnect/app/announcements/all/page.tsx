@@ -13,24 +13,7 @@ export default async function page() {
     const session = await getServerSession(authOptions);
 
     const subscribedAnnouncements = await prisma.announcement.findMany({
-        where: {
-          ig: {
-            members: {
-              some: {
-                email: session?.user?.email!
-              }
-            }
-          }
-        },
-        include: {
-          ig: {
-            include: {
-              members: {
-                select: { email: true }
-              }
-            }
-          }
-        }
+        
       });
 
     return (

@@ -22,8 +22,8 @@ export default function DynamicView({announcements, email} : AppProps) {
     }
 
     return (
-        <>
+        <div className='pt-6 ml-3'>
           <Container announcements={getAnnouncements()} email={email} />
-        </>
+        </div>
     )
 }

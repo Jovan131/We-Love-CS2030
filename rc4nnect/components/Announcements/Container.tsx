@@ -14,7 +14,7 @@ type AppProps = {
 const Container: React.FC<AppProps> = ({announcements, email}) => {
 
     return (
-        <div className="grid grid-cols-4">
+        <div className="flex flex-col items-center w-full">
             {announcements.map((announcement) => <Card key={announcement.id} announcement={announcement} email={email} />)}
         </div>
     )
