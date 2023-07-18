@@ -44,7 +44,7 @@ export default async function Profile() {
           <h1 className='text-3xl mb-2'>{"Roles"}</h1>
           <div className='bg-gray-200 text-black rounded py-2 px-2 flex justify-start'>
             <ResidentRole />
-            {igsHeaded?.map((ig) => (<IgHeadRole igName={ig.name} />))}
+            {igsHeaded?.map((ig) => (<IgHeadRole key={ig.name} igName={ig.name} />))}
             {session?.user.role === 'ADMIN' && <AdminRole />}
           </div>
         </div>
