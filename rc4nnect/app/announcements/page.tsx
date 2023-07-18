@@ -1,10 +1,10 @@
 import Layout from '@/components/Layout'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
-export default function announcements() {
-    return (
-        <Layout>
-          <div> Coming soon! </div>
-        </Layout>
-  )
+export default function Announcements() {
+    redirect('/announcements/subscribed')
 }
+
+
+
