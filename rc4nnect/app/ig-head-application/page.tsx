@@ -19,14 +19,6 @@ export default async function page() {
 
   const igs = await getIGs()
 
-  if (session?.user?.role === 'ADMIN') {
-    return (
-      <Layout>
-        <div>Admins cannot apply to be IG head.</div>
-      </Layout>
-    )
-  }
-
   return (
     <Layout>
       <div className='px-5 text-lg'>
