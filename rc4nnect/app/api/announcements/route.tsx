@@ -21,7 +21,7 @@ export async function POST(input: any) {
     data: {
         title: title,
         content: content,
-        ig: iG,
+        igName: iG,
     }
   })
 
