@@ -109,6 +109,19 @@ export default function Sidebar() {
 
           <div
             className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
+              pathName === '/make-announcements' && "bg-light-white"
+            } `}
+            onClick={() => {router.push('/make-announcements')}}
+          >
+            <div className='w-6 h-6'></div>
+            <span className={`${!open && "hidden"} origin-left duration-200`}>
+              Make Announcements
+            </span>
+          </div>
+
+
+          <div
+            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
               pathName === '/ig-head-application' && "bg-light-white"
             } `}
             onClick={() => {router.push('/ig-head-application')}}
