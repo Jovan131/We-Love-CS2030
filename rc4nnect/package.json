@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^1.0.0-beta.13",
     "@prisma/client": "^4.16.1",
     "@sendgrid/mail": "^7.7.0",
     "@types/react": "18.2.7",
@@ -24,10 +25,12 @@
     "eslint-config-next": "13.4.3",
     "flowbite": "^1.7.0",
     "flowbite-react": "^0.4.10",
+    "moment": "^2.29.4",
     "next": "13.4.3",
     "next-auth": "^4.22.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
+    "react-datetime": "^3.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
