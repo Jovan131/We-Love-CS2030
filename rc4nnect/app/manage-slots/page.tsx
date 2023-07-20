@@ -2,11 +2,13 @@ import Layout from '@/components/Layout'
 import { getServerSession } from 'next-auth'
 import React from 'react'
 import { authOptions } from '../api/auth/[...nextauth]/route'
+import ManageSlotsTable from './ManageSlotsTable'
+import { prisma } from '../db'
 
 export default async function page() {
   const session = await getServerSession(authOptions)
 
-  if (session?.user?.role !== 'ADMIN' && session?.user?.role !== 'IG_HEAD') {
+  if (session?.user?.role !== 'IG_HEAD') {
     return (
       <Layout>
         <div>Only IG Heads have access to this page.</div>
@@ -14,10 +16,26 @@ export default async function page() {
       </Layout>
     )
   } else {
+    const igsHeaded = await prisma.iG.findMany({
+      where: {
+        igHeadID: session.user.id
+      }
+    })
+
+    const slots = await prisma.slot.findMany({
+      where: {
+        igName: { in: igsHeaded.map((ig) => ig.name) }
+      },
+      include: {
+        residents: {
+          select: { name: true }
+        }
+      }
+    })
+
     return (
       <Layout>
-        <div>You can create new slots here, as well as modify exisiting slots.</div>
-        <div>{`My role is ${session?.user.role}`}</div>
+        <ManageSlotsTable slots={slots} igsHeaded={igsHeaded.map((ig) => ig.name)} />
       </Layout>
     )
   }
