@@ -2,7 +2,7 @@ import Layout from '@/components/Layout'
 import { getServerSession } from 'next-auth'
 import React from 'react'
 import { authOptions } from '../api/auth/[...nextauth]/route'
-import ManageSlotsTable from '../../components/ManageSlots/ManageSlotsTable'
+import ManageSlotsTable from './ManageSlotsTable'
 import { prisma } from '../db'
 
 export default async function page() {
