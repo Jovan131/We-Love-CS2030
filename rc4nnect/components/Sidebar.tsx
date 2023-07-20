@@ -89,9 +89,9 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/announcements')}}
           >
-            <Image src={`/images/Chat.png`} alt='Annonucements' width={24} height={24} />
+            <Image src={`/images/Chat.png`} alt='Announcements' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Annonucements
+              Announcements
             </span>
           </div>
           

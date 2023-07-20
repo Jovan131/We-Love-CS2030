@@ -9,8 +9,6 @@ import toast from 'react-hot-toast'
 type AppProps = {
     igsHeaded: {
         name: string,
-
-
     }[] | undefined
 }
 
