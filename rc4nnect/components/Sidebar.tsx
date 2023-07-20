@@ -89,9 +89,9 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/announcements')}}
           >
-            <Image src={`/images/Chat.png`} alt='Announcements' width={24} height={24} />
+            <Image src={`/images/Chat.png`} alt='Annonucements' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Announcements
+              Annonucements
             </span>
           </div>
           
@@ -106,19 +106,6 @@ export default function Sidebar() {
               Manage Slots
             </span>
           </div>
-
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
-              pathName === '/make-announcements' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/make-announcements')}}
-          >
-            <div className='w-6 h-6'></div>
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Make Announcements
-            </span>
-          </div>
-
 
           <div
             className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${

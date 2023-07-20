@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^1.0.0-beta.13",
     "@prisma/client": "^4.16.1",
     "@sendgrid/mail": "^7.7.0",
     "@types/react": "18.2.7",
@@ -58,7 +59,6 @@
   "browser": {
     "fs": false,
     "os": false,
-    "path": false,
-    "child_process": false
+    "path": false
   }
 }
