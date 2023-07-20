@@ -27,8 +27,7 @@ export default function ChangePassword({ userEmail }: AppProps) {
     })
     .catch((error) => {
       toast.error(error.response.data)
-    }
-    )
+    })
   }
 
   const [openModal, setOpenModal] = useState<string | undefined>();
