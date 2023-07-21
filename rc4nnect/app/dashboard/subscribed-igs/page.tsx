@@ -4,7 +4,7 @@ import { Session, getServerSession } from 'next-auth';
 import 'tailwindcss/tailwind.css';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import Layout from '@/components/Layout';
-import DynamicCatalog from '@/components/Catalog/DynamicCatalog';
+import DynamicCatalog from '@/components/ManageIG/DynamicCatalog';
 
 
 export default async function SubscribedIgs() {
