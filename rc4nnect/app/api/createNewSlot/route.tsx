@@ -36,7 +36,7 @@ export async function POST(input: any) {
     return new NextResponse('Max slot duration is 3 hours', { status: 400 })
   }
 
-  if (moment(startDateTime).hour() < 14) {
+  if (moment(startDateTime).hour() < 6) {
     return new NextResponse('Slot timing must be between 1400H-2345H.', { status: 400 })
   }
 
