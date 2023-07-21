@@ -91,7 +91,7 @@ export default function Sidebar() {
           >
             <Image src={`/images/Chat.png`} alt='Announcements' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Announcements
+              View Announcements
             </span>
           </div>
           
@@ -101,7 +101,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/manage-slots')}}
           >
-            <div className='w-6 h-6'></div>
+            <Image src={`/images/manageSlot.png`} alt='Announcements' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Manage Slots
             </span>
@@ -113,7 +113,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/make-announcements')}}
           >
-            <div className='w-6 h-6'></div>
+            <Image src={`/images/makeAnnouncement.png`} alt='Announcements' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               Make Announcements
             </span>
@@ -126,7 +126,7 @@ export default function Sidebar() {
             } `}
             onClick={() => {router.push('/ig-head-application')}}
           >
-            <div className='w-6 h-6'></div>
+            <Image src={`/images/igHeadApp.png`} alt='Announcements' width={24} height={24} />
             <span className={`${!open && "hidden"} origin-left duration-200`}>
               IG Head Application
             </span>
