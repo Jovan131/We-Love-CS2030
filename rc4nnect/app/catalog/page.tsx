@@ -19,8 +19,13 @@ export default async function page() {
             }
         })
         return igs.map((ig) => {
-            return {...ig, subscribed: ig.members.map((obj) => obj.email).includes(session?.user?.email!)}
-        })
+            return {...ig, subscribed: ig.members.map((obj) => obj.email).includes(session?.user?.email!)
+            }
+        }).sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            return nameA.localeCompare(nameB); // Use localeCompare to sort in alphabetical order
+          });
     }
 
     const session = await getServerSession(authOptions)
