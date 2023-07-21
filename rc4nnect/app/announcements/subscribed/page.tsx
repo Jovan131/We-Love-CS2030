@@ -37,6 +37,8 @@ export default async function page() {
 
             <DynamicView announcements={subscribedAnnouncements.map((ig) => {
       return {...ig, subscribed: true}
+    }).sort((a, b) => {
+      return new Date(b.createdDateTime).getTime() - new Date(a.createdDateTime).getTime();
     })} email={session?.user?.email!}/>
 
     );
