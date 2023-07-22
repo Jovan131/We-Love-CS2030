@@ -22,15 +22,12 @@ const Form: React.FC<AppProps> = ({igsHeaded}) => {
         title: '',
         content: ''
       })
-
-    const router = useRouter();
   
     const announce = async (e: any) => {
       e.preventDefault()
       axios.post('/api/announcements', data)
       .then(() => {
         toast.success('Announcement posted successfully!')
-        router.refresh()
       })
       .catch((error: any) => {
         toast.error(error.response.data)

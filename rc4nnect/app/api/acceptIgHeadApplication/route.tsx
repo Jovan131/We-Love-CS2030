@@ -6,9 +6,17 @@ export async function POST(request: any) {
   const { id, igName, applicantEmail } = body
 
 
-  /*
-  TO-DO: CODE TO NOTIFY APPLICANT THAT THEIR APPLICATION WAS SUCCESSFUL
-  */
+  const sgMail = require('@sendgrid/mail')
+  sgMail.setApiKey(process.env.SENDGRID_API)
+  
+  const acceptMsg = `Hello ${applicantEmail}, your application for the IG Head position of ${igName} is successful! You can now access IG Head features of rc4nnect.`
+
+  const msg = {
+    to: applicantEmail, // Change to your recipient
+    from: 'pesmobileinstall@gmail.com', // Change to your verified sender
+    subject: 'IG Head Application Successful',
+    text: acceptMsg
+  }
 
 
   const igHeadAlreadyExists = await prisma.iG.findFirst({
@@ -47,6 +55,15 @@ export async function POST(request: any) {
     where: {
       id: id
     }
+  })
+
+  sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error: any) => {
+    console.error(error)
   })
 
   return NextResponse.json(deleteIgHeadApplication)
