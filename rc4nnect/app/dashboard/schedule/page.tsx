@@ -94,13 +94,22 @@ async function getSlots(session: Session) {
   return await Promise.all(slotsWithUpdatedProperties)
 }
 
+async function getLessons(session: Session) {
+  const lessons = await prisma.lesson.findMany({
+    where: { residentEmail: session.user?.email! }
+  })
+
+  return lessons
+}
+
 export default async function Schedule() {
   const session = await getServerSession(authOptions)
   const slots = await getSlots(session!)
+  const lessons = await getLessons(session!)
 
   return (
     <>
-      <DynamicCalendar session={session} slots={slots} />
+      <DynamicCalendar session={session} slots={slots} lessons={lessons} />
     </>
   );
 }   

@@ -1,5 +1,6 @@
 import React from 'react';
 import Slot from './Slot';
+import Lesson from './Lesson';
 
 type AppProps = {
   slots: {
@@ -12,6 +13,14 @@ type AppProps = {
     residents: { name: string, id: string }[];
     polled: boolean,
     subscribed: boolean,
+  }[];
+  lessons: {
+    id: string;
+    startDateTime: Date;
+    duration: number;
+    name: string;
+    location: string | null;
+    residentEmail: string;
   }[];
   session: any
 }
@@ -33,7 +42,7 @@ const timeSlots = ["1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100
 
 
 
-const Calendar: React.FC<AppProps> = ({slots, session}) => {
+const Calendar: React.FC<AppProps> = ({slots, session, lessons}) => {
   function getColor(slotInfo: SlotInfo, subscribed: any, polled: any) {
     const positionInList = slotInfo.residents.findIndex((resident) => resident.id === session.user.id) + 1
   
@@ -67,6 +76,7 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
               {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => {  
                 return (<Slot key={slot.id} slotInfo={slot} session={session} color={getColor(slot, slot.subscribed, slot.polled)}/>)
               })}
+              {lessons.filter((lesson) => lesson.startDateTime.getDay() === index + 1).map((lesson) => <Lesson key={lesson.id} lessonInfo={lesson} />)}
             </div>
           </div>
         ))}
