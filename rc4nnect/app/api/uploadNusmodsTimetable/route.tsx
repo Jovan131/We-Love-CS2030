@@ -25,7 +25,9 @@ export async function POST(request: any) {
     const location = lessonObj.LOCATION
 
     if (lessonObj.hasOwnProperty('RRULE')) {  // means lesson is recurring
-      const exdates = lessonObj.EXDATE.map((icsDateStr) => iCalDateParser(icsDateStr))
+      const exdates = lessonObj.EXDATE.map((icsDateStr) => iCalDateParser(icsDateStr).getTime()) // each exdate is in getTime() format
+      // console.log(exdates)
+      // console.log(lessonObj.EXDATE.map((icsDateStr) => iCalDateParser(icsDateStr)))
 
       return Array(14)
       .fill(iCalDateParser(lessonObj.DTSTART))
@@ -35,7 +37,7 @@ export async function POST(request: any) {
         name: name,
         location: location
       }))
-      .filter((obj) => !exdates.includes(obj.startDateTime)) // returns an array of lessons (HAVENT INCLUDE EMAIL IN LESSON)
+      .filter((obj) => !exdates.includes(obj.startDateTime.getTime())) // returns an array of lessons
     } else {  // means lesson is not recurring
       return {
         startDateTime: iCalDateParser(lessonObj.DTSTART),
@@ -56,7 +58,7 @@ export async function POST(request: any) {
   ])
 
   return NextResponse.json(createLessons)
-}
+  }
 
 // EXAMPLE FORMAT OF modsData:
 // [

@@ -18,13 +18,14 @@ type AppProps = {
     },
     session: any,
     color: string,
+    earliestHour: number
 }
 
-const Slot: React.FC<AppProps> = ({slotInfo, session, color}) => {
+const Slot: React.FC<AppProps> = ({slotInfo, session, color, earliestHour}) => {
     const [showModal, setShowModal] = useState(false);
         
-    const colStartValue = 1 + ((slotInfo.startDateTime.getHours() - 14) * 4) + (slotInfo.startDateTime.getMinutes() / 15)
-    const colEndValue = 1 + ((slotInfo.startDateTime.getHours() - 14) * 4) + (slotInfo.startDateTime.getMinutes() / 15) + (slotInfo.duration * 4)
+    const colStartValue = 1 + ((slotInfo.startDateTime.getHours() - earliestHour) * 4) + (slotInfo.startDateTime.getMinutes() / 15)
+    const colEndValue = 1 + ((slotInfo.startDateTime.getHours() - earliestHour) * 4) + (slotInfo.startDateTime.getMinutes() / 15) + (slotInfo.duration * 4)
 
     return (
         <>
