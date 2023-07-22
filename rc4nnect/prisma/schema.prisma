@@ -29,6 +29,8 @@ model Resident {
   slots    Slot[]
   igs      IG[]
 
+  lessons Lesson[]
+
   igsHeaded IG[] @relation("IgsHeaded")
   igHeadApplications IgHeadApplication[]
 
@@ -105,4 +107,15 @@ model IgHeadApplication {
   igName              String   @map("ig_name")
   applicantEmail      String   @map("applicant_email")
   @@map("ig_head_applications")
+}
+
+model Lesson {
+  id            String   @default(cuid()) @id
+  startDateTime DateTime @map("start_date_time")
+  duration      Float
+  name          String
+  location      String?
+  resident      Resident @relation(fields: [residentEmail], references: [email])
+  residentEmail String   @map("resident_email")
+  @@map("lessons")
 }

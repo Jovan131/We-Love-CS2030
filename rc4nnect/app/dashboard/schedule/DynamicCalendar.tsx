@@ -6,6 +6,7 @@ import DisplayDropdown from './DisplayDropdown';
 import LeftArrow from '@/components/Calendar/LeftArrow';
 import RightArrow from '@/components/Calendar/RightArrow';
 import weekInfo from '@/components/Calendar/WeekInfo';
+import NusmodsToggle from './NusmodsToggle';
 
 type AppProps = {
   slots: {
@@ -19,12 +20,21 @@ type AppProps = {
     polled: boolean,
     subscribed: boolean,
   }[];
+  lessons: {
+    id: string;
+    startDateTime: Date;
+    duration: number;
+    name: string;
+    location: string | null;
+    residentEmail: string;
+  }[];
   session: any
 }
 
-export default function DynamicCalendar({ session, slots }: AppProps) {
+export default function DynamicCalendar({ session, slots, lessons }: AppProps) {
   const [displayType, setDisplayType] = useState('both')
   const [weekIndex, setWeekIndex] = useState(0)
+  const [showNusmodsLessons, setShowNusmodsLessons] = useState(true)
 
   function changeDisplayType(newDisplayType: string) {
     setDisplayType(newDisplayType)
@@ -42,6 +52,14 @@ export default function DynamicCalendar({ session, slots }: AppProps) {
     }
   }
 
+  function getLessons() {
+    if (showNusmodsLessons) {
+      return lessons.filter((lesson) => (lesson.startDateTime >= weekInfo[weekIndex].startDate && lesson.startDateTime <= weekInfo[weekIndex].endDate))
+    } else {
+      return []
+    }
+  }
+
   return (
     <>
       <div className='flex justify-center items-center mt-14'>
@@ -50,9 +68,10 @@ export default function DynamicCalendar({ session, slots }: AppProps) {
         <RightArrow weekIndex={weekIndex} setWeekIndex={setWeekIndex}/>
       </div>
       <div className="mt-12">
-        <Calendar session={session} slots={getSlots()}/>
+        <Calendar session={session} slots={getSlots()} lessons={getLessons()}/>
       </div>
-      <div className='flex justify-end pt-5'>
+      <div className='flex justify-between pt-5 ml-[50px]'>
+        <NusmodsToggle showNusmodsLessons={showNusmodsLessons} setShowNusmodsLessons={setShowNusmodsLessons} />
         <DisplayDropdown changeDisplayType={changeDisplayType}/>
       </div>
     </>

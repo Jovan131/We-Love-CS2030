@@ -1,5 +1,6 @@
 import React from 'react';
 import Slot from './Slot';
+import Lesson from './Lesson';
 
 type AppProps = {
   slots: {
@@ -12,6 +13,14 @@ type AppProps = {
     residents: { name: string, id: string }[];
     polled: boolean,
     subscribed: boolean,
+  }[];
+  lessons: {
+    id: string;
+    startDateTime: Date;
+    duration: number;
+    name: string;
+    location: string | null;
+    residentEmail: string;
   }[];
   session: any
 }
@@ -29,11 +38,11 @@ type SlotInfo = {
 }
 
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-const timeSlots = ["1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"];
+const timeSlots = ["0800", "0900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"];
 
 
 
-const Calendar: React.FC<AppProps> = ({slots, session}) => {
+const Calendar: React.FC<AppProps> = ({slots, session, lessons}) => {
   function getColor(slotInfo: SlotInfo, subscribed: any, polled: any) {
     const positionInList = slotInfo.residents.findIndex((resident) => resident.id === session.user.id) + 1
   
@@ -50,11 +59,18 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
     }
   }
 
+  const earliestHour = lessons.reduce(
+    (earliestHour, currentValue) => (currentValue.startDateTime.getHours() < earliestHour ? currentValue.startDateTime.getHours() : earliestHour)
+    , 14
+  )  //returns a number between 8-14 (assuming earliest lesson in Nusmods is 8am)
+
+  const additionalWidth = (14 - earliestHour) * 90  // width (in px) to add to the calendar to fit the additional hours
+
   return (
     <div className='overflow-x-auto'>
-      <div className='min-w-[950px]'>
-        <ul className="list-none grid grid-cols-10 mr-5 ml-[30px]">
-          {timeSlots.map((timeSlot) => <li key={timeSlot}>{timeSlot}</li>)}
+      <div style={{ minWidth: `${950 + additionalWidth}px` }}>
+        <ul className="list-none grid mr-5 ml-[30px]" style={{ gridTemplateColumns: `repeat(${24 - earliestHour}, minmax(0, 1fr))` }}>
+          {timeSlots.slice(earliestHour - 8).map((timeSlot) => <li key={timeSlot}>{timeSlot}</li>)}
         </ul>
       </div>
       <div>
@@ -63,10 +79,21 @@ const Calendar: React.FC<AppProps> = ({slots, session}) => {
             <div className='flex items-center justify-end bg-slate-900 sticky left-[-1px] z-20 '>
               <div className="text-center align-middle mr-2">{day}</div>
             </div>
-            <div className="bg-gray-300 grid grid-cols-40 min-w-[900px] mt-[1px]">
-              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1).map((slot) => {  
-                return (<Slot key={slot.id} slotInfo={slot} session={session} color={getColor(slot, slot.subscribed, slot.polled)}/>)
+            <div className="bg-gray-300 grid mt-[1px]" style={{ minWidth: `${900 + additionalWidth}px`, gridTemplateColumns: `repeat(${(24 - earliestHour) * 4}, minmax(0, 1fr))` }}>
+              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1)
+              .map((slot) => {  
+                return (
+                <Slot 
+                  key={slot.id} 
+                  slotInfo={slot} 
+                  session={session} 
+                  color={getColor(slot, slot.subscribed, slot.polled)}
+                  earliestHour={earliestHour}
+                  />
+                )
               })}
+              {lessons.filter((lesson) => lesson.startDateTime.getDay() === index + 1)
+              .map((lesson) => <Lesson key={lesson.id} lessonInfo={lesson} earliestHour={earliestHour} />)}
             </div>
           </div>
         ))}
