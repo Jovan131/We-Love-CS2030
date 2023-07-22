@@ -59,7 +59,7 @@ export default function FilterableCalendar({ session, slots }: AppProps) {
         <RightArrow weekIndex={weekIndex} setWeekIndex={setWeekIndex}/>
       </div>
       <div className="mt-12">
-        <Calendar session={session} slots={getSlots()}/>
+        <Calendar session={session} slots={getSlots()} lessons={[]}/>
       </div>
       <div className='flex justify-between pt-5 gap-4 ml-[50px]'>
         <FilterOnlyOpenSlots displayOnlyOpenSlots={displayOnlyOpenSlots} setDisplayOnlyOpenSlots={setDisplayOnlyOpenSlots}/>

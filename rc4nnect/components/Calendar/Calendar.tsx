@@ -62,7 +62,7 @@ const Calendar: React.FC<AppProps> = ({slots, session, lessons}) => {
   const earliestHour = lessons.reduce(
     (earliestHour, currentValue) => (currentValue.startDateTime.getHours() < earliestHour ? currentValue.startDateTime.getHours() : earliestHour)
     , 14
-  )  //returns a number between 8-14 (assuming earliest lesson in Nusmods is 8am)
+  ) // a number between 8-14 (assuming earliest lesson in Nusmods is 8am)
 
   const additionalWidth = (14 - earliestHour) * 90  // width (in px) to add to the calendar to fit the additional hours
 
