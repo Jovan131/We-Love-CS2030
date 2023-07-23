@@ -21,6 +21,7 @@ type AppProps = {
     ig: { category: string }
     polled: boolean,
     subscribed: boolean,
+    description: string | null,
   }[];
   session: any
 }

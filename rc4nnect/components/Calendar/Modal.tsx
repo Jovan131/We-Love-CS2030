@@ -16,6 +16,7 @@ type AppProps = {
       residents: { name: string, id: string }[];
       polled: boolean,
       subscribed: boolean,  
+      description: string | null,
   },
   isVisible: boolean,
   onClose: any,
@@ -63,12 +64,21 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
           <p className='font-normal py-3'>
             <span className='font-semibold'>Venue:</span> {slotInfo.venue}
           </p>
-          <div className='font-normal py-3 mb-8 flex justify-between'>
+          <div className='font-normal py-3 flex justify-between'>
             <div>
               <span className='font-semibold'>Slots availability:</span> 
               {" " + slotInfo.residents.length + "/" + (slotInfo.capacity ?? "~")}
             </div>
             <ListOfPeopleWhoPolled residentsList={slotInfo.residents}/>
+          </div>
+          <div className='mb-8'>
+            {(slotInfo.description && slotInfo.description !== '') &&
+              (
+                <p className='font-normal py-3'>
+                  <span className='font-semibold'>Description:</span> {!slotInfo.description || slotInfo.description}
+                </p>
+              )
+            }
           </div>
           <div className='flex justify-between'>
             <SlotSubscribeButton subscribed={slotInfo.subscribed} slotID={slotInfo.id} email={session.user.email}/>

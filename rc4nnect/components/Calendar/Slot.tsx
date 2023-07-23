@@ -14,7 +14,8 @@ type AppProps = {
         igName: string;
         residents: { name: string, id: string }[];
         polled: boolean,
-        subscribed: boolean,    
+        subscribed: boolean, 
+        description: string | null,   
     },
     session: any,
     color: string,

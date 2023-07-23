@@ -19,6 +19,7 @@ type AppProps = {
     residents: { name: string, id: string }[];
     polled: boolean,
     subscribed: boolean,
+    description: string | null,
   }[];
   lessons: {
     id: string;

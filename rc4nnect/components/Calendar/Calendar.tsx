@@ -13,6 +13,7 @@ type AppProps = {
     residents: { name: string, id: string }[];
     polled: boolean,
     subscribed: boolean,
+    description: string | null,
   }[];
   lessons: {
     id: string;
@@ -35,15 +36,7 @@ type SlotInfo = {
   residents: { name: string, id: string }[];
   polled: boolean,
   subscribed: boolean,
-}
-
-type LessonInfo = {
-  id: string;
-  startDateTime: Date;
-  duration: number;
-  name: string;
-  location: string | null;
-  residentEmail: string;
+  description: string | null,
 }
 
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri"];
