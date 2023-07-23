@@ -4,13 +4,13 @@ import { signOut } from 'next-auth/react';
 import { redirect } from 'next/dist/server/api-utils';
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image';
+import Link from 'next/link'
 
 export default function Sidebar() {
   const pathName = usePathname()
   const [open, setOpen] = useState(true);
-  const router = useRouter()
 
   return (
     <div
@@ -47,102 +47,102 @@ export default function Sidebar() {
       </div>
       <div className="pt-6 flex flex-col justify-between h-full">
         <div>
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2 ${
-              pathName.startsWith('/dashboard') && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/dashboard')}}
-          >
-            <Image src={`/images/Calendar.png`} alt='Dashboard' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              My Dashboard
-            </span>
-          </div>
-
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
-              pathName === '/all-igs' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/all-igs')}}
-          >
-            <Image src={`/images/Search.png`} alt='Browse all IGs' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Browse All IGs
-            </span>
-          </div>
-
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
-              pathName === '/catalog' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/catalog')}}
-          >
-            <Image src={`/images/Catalog.png`} alt='ig catalog' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              IG Catalog
-            </span>
-          </div>
-
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
-              pathName === '/announcements' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/announcements')}}
-          >
-            <Image src={`/images/Chat.png`} alt='Announcements' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              View Announcements
-            </span>
-          </div>
-          
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
-              pathName === '/manage-slots' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/manage-slots')}}
-          >
-            <Image src={`/images/manageSlot.png`} alt='Announcements' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Manage Slots
-            </span>
-          </div>
-
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
-              pathName === '/make-announcements' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/make-announcements')}}
-          >
-            <Image src={`/images/makeAnnouncement.png`} alt='Announcements' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Make Announcements
-            </span>
-          </div>
-
-
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
-              pathName === '/ig-head-application' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/ig-head-application')}}
-          >
-            <Image src={`/images/igHeadApp.png`} alt='Announcements' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              IG Head Application
-            </span>
-          </div>
-
-          <div
-            className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
-              pathName === '/settings' && "bg-light-white"
-            } `}
-            onClick={() => {router.push('/settings')}}
-          >
-            <Image src={`/images/Settings.png`} alt='Settings' width={24} height={24} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              Settings
-            </span>
-          </div>
+          <Link href='/dashboard'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2 ${
+                pathName.startsWith('/dashboard') && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/Calendar.png`} alt='Dashboard' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                My Dashboard
+              </span>
+            </div>
+          </Link>
+          <Link href='/all-igs'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
+                pathName === '/all-igs' && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/Search.png`} alt='Browse all IGs' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Browse All IGs
+              </span>
+            </div>
+          </Link>
+          <Link href='/catalog'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
+                pathName === '/catalog' && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/Catalog.png`} alt='ig catalog' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                IG Catalog
+              </span>
+            </div>
+          </Link>
+          <Link href='/announcements'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
+                pathName.startsWith('/announcements') && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/Chat.png`} alt='Announcements' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                View Announcements
+              </span>
+            </div>
+          </Link>
+          <Link href='/manage-slots'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
+                pathName === '/manage-slots' && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/manageSlot.png`} alt='Announcements' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Manage Slots
+              </span>
+            </div>
+          </Link>
+          <Link href='/make-announcements'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
+                pathName === '/make-announcements' && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/makeAnnouncement.png`} alt='Announcements' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Make Announcements
+              </span>
+            </div>
+          </Link>
+          <Link href='/ig-head-application'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-2.5 ${
+                pathName === '/ig-head-application' && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/igHeadApp.png`} alt='Announcements' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                IG Head Application
+              </span>
+            </div>
+          </Link>
+          <Link href='/settings'>
+            <div
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-9 ${
+                pathName === '/settings' && "bg-light-white"
+              } `}
+            >
+              <Image src={`/images/Settings.png`} alt='Settings' width={24} height={24} />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Settings
+              </span>
+            </div>
+          </Link>
         </div>
         <div
           className={"flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mb-12"}
