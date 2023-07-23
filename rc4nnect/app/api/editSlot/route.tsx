@@ -54,6 +54,21 @@ export async function POST(input: any) {
     return new NextResponse('Capacity must be a number between 1 and 99', { status: 400 })
   }
 
+  const oldSlot = await prisma.slot.findFirst({
+    where: {
+      id: id,
+    }
+  })
+
+  const oldTime = oldSlot?.startDateTime
+  const igSelected = oldSlot?.igName!
+
+
+  const title = `Details for session on ${moment(oldTime).format("dddd, MMMM Do")}, ${moment(oldTime).format("hh:mm A")} has been updated`
+
+  const content = `Please check the All IGs schedule for more details!`
+
+  
   const updateSlot = await prisma.slot.update({
     where: {
       id: id,
@@ -65,6 +80,14 @@ export async function POST(input: any) {
       duration: moment(endDateTime).diff(moment(startDateTime), 'hours'),
       description: description,
     },
+  })
+
+  const announcement = await prisma.announcement.create({
+    data: {
+      title: title,
+      content: content,
+      igName: igSelected,
+    }
   })
 
   return NextResponse.json(updateSlot)

@@ -65,5 +65,17 @@ export async function POST(input: any) {
     },
   })
 
+  const title = `New session on ${moment(startDateTime).format("dddd, MMMM Do")}, ${moment(startDateTime).format("hh:mm A")} - ${moment(endDateTime).format("hh:mm A")}`
+
+  const content = `Venue: ${venue}, Capacity: ${capacity}`
+
+  const announcement = await prisma.announcement.create({
+    data: {
+      title: title,
+      content: content,
+      igName: igSelected,
+    }
+  })
+
   return NextResponse.json(slot)
 }
