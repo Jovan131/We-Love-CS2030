@@ -27,20 +27,27 @@ type AppProps = {
 
 type SlotInfo = {
   id: string;
-    capacity: any; 
-    venue: string;
-    startDateTime: Date;
-    duration: number;
-    igName: string;
-    residents: { name: string, id: string }[];
-    polled: boolean,
-    subscribed: boolean,
+  capacity: any; 
+  venue: string;
+  startDateTime: Date;
+  duration: number;
+  igName: string;
+  residents: { name: string, id: string }[];
+  polled: boolean,
+  subscribed: boolean,
+}
+
+type LessonInfo = {
+  id: string;
+  startDateTime: Date;
+  duration: number;
+  name: string;
+  location: string | null;
+  residentEmail: string;
 }
 
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 const timeSlots = ["0800", "0900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"];
-
-
 
 const Calendar: React.FC<AppProps> = ({slots, session, lessons}) => {
   function getColor(slotInfo: SlotInfo, subscribed: any, polled: any) {
@@ -58,6 +65,22 @@ const Calendar: React.FC<AppProps> = ({slots, session, lessons}) => {
       return ''
     }
   }
+
+  function getSlotsAndLessons(slots: any[], lessons: any[], index: number) {
+    return slots
+      .concat(lessons)
+      .filter((slotOrLesson) => slotOrLesson.startDateTime.getDay() === index + 1)
+      .sort((slotOrLesson1, slotOrLesson2) => slotOrLesson1.startDateTime < slotOrLesson2.startDateTime ? -1 : 1)
+      .map((slotOrLesson) => slotOrLesson.hasOwnProperty('igName') ? 
+        <Slot 
+          key={slotOrLesson.id} 
+          slotInfo={slotOrLesson} 
+          session={session} 
+          color={getColor(slotOrLesson, slotOrLesson.subscribed, slotOrLesson.polled)}
+          earliestHour={earliestHour}
+        /> :
+        <Lesson key={slotOrLesson.id} lessonInfo={slotOrLesson} earliestHour={earliestHour} />)
+  }  // sort is necessary to ensure that new rows are not created unnecessarily
 
   const earliestHour = lessons.reduce(
     (earliestHour, currentValue) => (currentValue.startDateTime.getHours() < earliestHour ? currentValue.startDateTime.getHours() : earliestHour)
@@ -80,20 +103,7 @@ const Calendar: React.FC<AppProps> = ({slots, session, lessons}) => {
               <div className="text-center align-middle mr-2">{day}</div>
             </div>
             <div className="bg-gray-300 grid mt-[1px]" style={{ minWidth: `${900 + additionalWidth}px`, gridTemplateColumns: `repeat(${(24 - earliestHour) * 4}, minmax(0, 1fr))` }}>
-              {slots.filter((slot) => slot.startDateTime.getDay() === index + 1)
-              .map((slot) => {  
-                return (
-                <Slot 
-                  key={slot.id} 
-                  slotInfo={slot} 
-                  session={session} 
-                  color={getColor(slot, slot.subscribed, slot.polled)}
-                  earliestHour={earliestHour}
-                  />
-                )
-              })}
-              {lessons.filter((lesson) => lesson.startDateTime.getDay() === index + 1)
-              .map((lesson) => <Lesson key={lesson.id} lessonInfo={lesson} earliestHour={earliestHour} />)}
+              {getSlotsAndLessons(slots, lessons, index)}
             </div>
           </div>
         ))}
