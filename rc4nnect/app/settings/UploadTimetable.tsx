@@ -57,7 +57,7 @@ function UploadTimetable({ residentEmail }: AppProps) {
         onChange={handleFileChange} />
         <Button onClick={handleUploadClick}>Upload</Button>
       </div>
-      <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">iCalendar File (.ics) (MAX. 100kb)</p>
+      <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">iCalendar File (.ics) (MAX. 100KB)</p>
     </>
   )
 }
