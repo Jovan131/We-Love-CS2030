@@ -19,10 +19,10 @@ function DeleteButton({ slotId }: AppProps) {
   return (
     <>
       <Tooltip content="Delete">
-        <button onClick={() => {
+        <button className='text-red-600 hover:text-red-700' onClick={() => {
           props.setOpenModal('pop-up')
         }}>
-          <RiDeleteBin6Line style={{ color: 'red', width: '24px', height: '24px' }} />
+          <RiDeleteBin6Line style={{ width: '24px', height: '24px' }} />
         </button>
       </Tooltip>
       <Modal className='z-[210]' show={props.openModal === 'pop-up'} size="md" popup onClose={() => props.setOpenModal(undefined)}>
