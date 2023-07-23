@@ -8,6 +8,7 @@ import CreatableSelect from 'react-select/creatable'
 import Datetime from 'react-datetime'
 import "react-datetime/css/react-datetime.css"
 import moment, { Moment } from 'moment';
+import 'moment/locale/en-sg'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
