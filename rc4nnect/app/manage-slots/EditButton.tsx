@@ -58,10 +58,10 @@ function EditButton({ slot }: AppProps) {
   return (
     <>
       <Tooltip content="Edit">
-        <button onClick={() => {
+        <button className='text-gray-400 hover:text-gray-500' onClick={() => {
           props.setOpenModal('pop-up')
         }}>
-          <RiEdit2Fill style={{ color: 'grey', width: '24px', height: '24px' }} />
+          <RiEdit2Fill style={{ width: '24px', height: '24px' }} />
         </button>
       </Tooltip>
       <Modal className='z-[210]' show={props.openModal === 'pop-up'} size="4xl" popup onClose={() => props.setOpenModal(undefined)}>
