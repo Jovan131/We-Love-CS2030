@@ -67,7 +67,7 @@ function Register() {
               />
             <input
               className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
-              placeholder="Email..."
+              placeholder="NUS Email..."
               value={data.email}
               onChange={(e) => setData({ ...data, email: e.target.value })}
               />
