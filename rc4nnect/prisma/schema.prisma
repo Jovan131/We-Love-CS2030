@@ -61,7 +61,7 @@ model Slot {
   capacity      Int?
   venue         String
   startDateTime DateTime   @map("start_date_time")
-  duration      Int
+  duration      Float
   description   String?
   igName        String     @map("ig_name")
   ig            IG         @relation(fields: [igName], references: [name])

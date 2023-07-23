@@ -59,11 +59,13 @@ export async function POST(input: any) {
       capacity: Number(capacity),
       venue: venue,
       startDateTime: startDateTime,
-      duration: moment(endDateTime).diff(moment(startDateTime), 'hours'),
+      duration: moment(endDateTime).diff(moment(startDateTime), 'hours', true),
       description: description,
       igName: igSelected,
     },
   })
+
+  console.log(moment(endDateTime).diff(moment(startDateTime), 'hours', true))
 
   const title = `New session on ${moment(startDateTime).format("dddd, MMMM Do")}, ${moment(startDateTime).format("hh:mm A")} - ${moment(endDateTime).format("hh:mm A")}`
 

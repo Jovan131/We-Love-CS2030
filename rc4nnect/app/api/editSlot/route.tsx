@@ -77,7 +77,7 @@ export async function POST(input: any) {
       capacity: Number(capacity),
       venue: venue,
       startDateTime: startDateTime,
-      duration: moment(endDateTime).diff(moment(startDateTime), 'hours'),
+      duration: moment(endDateTime).diff(moment(startDateTime), 'hours', true),
       description: description,
     },
   })

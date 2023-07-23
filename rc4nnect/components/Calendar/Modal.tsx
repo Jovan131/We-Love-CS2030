@@ -31,7 +31,7 @@ const Modal: React.FC<AppProps> = ({slotInfo, isVisible, onClose, session}) => {
 
   function addHours(date: Date, hours: number) {
     let dummyDate = new Date(date);   // create a new copy of the date object to prevent side effects
-    dummyDate.setHours(dummyDate.getHours() + hours);
+    dummyDate.setTime(dummyDate.getTime() + (hours*60*60*1000))  // this allows the function to work if `hours` is a decimal
   
     return dummyDate.toLocaleTimeString('en-SG', {
       hour12: false,
