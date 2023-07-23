@@ -5,7 +5,7 @@ import { Table, Row, Col, Tooltip, User, Text } from '@nextui-org/react'
 import EditButton from './EditButton'
 import DeleteButton from './DeleteButton'
 import NewSlotButton from './NewSlotButton'
-
+import { useTheme } from 'next-themes'
 
 type AppProps = {
   slots: {
@@ -107,7 +107,7 @@ function ManageSlotsTable({ slots, igsHeaded }: AppProps) {
         </Table.Header>
         <Table.Body items={slots}>
           {(slot: Slot) => (
-            <Table.Row key={slot.id} css={{color: "white"}}>
+            <Table.Row key={slot.id} css={{themecolor: "white"}}>
               {(columnKey) => (
                 <Table.Cell>{renderCell(slot, columnKey)}</Table.Cell>
               )}

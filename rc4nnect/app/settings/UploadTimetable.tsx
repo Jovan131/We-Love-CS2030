@@ -47,7 +47,7 @@ function UploadTimetable({ residentEmail }: AppProps) {
 
   return (
     <>
-      <label className="block mb-4 text-3xl font-medium text-white dark:text-white" htmlFor="file_input">Upload NUSMods Timetable</label>
+      <label className="block mb-4 text-3xl font-medium text-black dark:text-white" htmlFor="file_input">Upload NUSMods Timetable</label>
       <p className='mb-2 text-lg'>Upload your NUSMods timetable and see your lessons appear in your dashboard schedule!</p>
       <p className='mb-1 text-sm'>Tip 1: If you cannot see your lessons in dashboard, remember that most lessons only start after Week 1!</p>
       <p className='mb-4 text-sm'>Tip 2: If your timetable has changed after uploading, simply re-download from NUSMods and re-upload below to update your changes!</p>
