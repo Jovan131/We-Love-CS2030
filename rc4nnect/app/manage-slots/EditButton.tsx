@@ -7,6 +7,7 @@ import CreatableSelect from 'react-select/creatable'
 import Datetime from 'react-datetime'
 import { useRouter } from 'next/navigation';
 import moment, { Moment } from 'moment';
+import 'moment/locale/en-sg'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
@@ -74,7 +75,7 @@ function EditButton({ slot }: AppProps) {
               <input type="text" id="ig_name" className="cursor-not-allowed bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
               defaultValue={slot.igName} disabled />
             </div>
-            <div className='mb-3'>
+            <div className='mb-60'>
               <div className='flex gap-10'>
                 <div className="grow block text-sm font-medium text-gray-900 dark:text-white">
                   <p className='mb-2'>Start date/time:</p>
