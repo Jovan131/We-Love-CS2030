@@ -13,6 +13,14 @@ export async function POST(request: any) {
   const file:File = body.get('file')
   const residentEmail:string = body.get('residentEmail')
 
+  if (!file.name.endsWith('.ics')) {
+    return new NextResponse('Only .ics files are allowed', { status: 400 })
+  }
+
+  if (file.size > 100000) {
+    return new NextResponse('File cannot be bigger than 100KB', { status: 400 })
+  }
+
   const icsData = await file.text()
   // const modsData = icsToJson(icsData)
   const modsData = ical2json.convert(icsData).VCALENDAR[0].VEVENT
@@ -26,8 +34,6 @@ export async function POST(request: any) {
 
     if (lessonObj.hasOwnProperty('RRULE')) {  // means lesson is recurring
       const exdates = lessonObj.EXDATE.map((icsDateStr) => iCalDateParser(icsDateStr).getTime()) // each exdate is in getTime() format
-      // console.log(exdates)
-      // console.log(lessonObj.EXDATE.map((icsDateStr) => iCalDateParser(icsDateStr)))
 
       return Array(14)
       .fill(iCalDateParser(lessonObj.DTSTART))
