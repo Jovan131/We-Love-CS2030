@@ -79,23 +79,27 @@ function EditButton({ slot }: AppProps) {
               <div className='flex gap-10'>
                 <div className="grow block text-sm font-medium text-gray-900 dark:text-white">
                   <p className='mb-2'>Start date/time:</p>
-                  <Datetime 
-                    locale='en-SG'
-                    isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
-                    initialValue={slot.startDateTime}
-                    timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
-                    onChange={(e) => (startDateTime.current = e)}
-                  />
+                  <div className='text-black'>
+                    <Datetime 
+                      locale='en-SG'
+                      isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
+                      initialValue={slot.startDateTime}
+                      timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
+                      onChange={(e) => (startDateTime.current = e)}
+                    />
+                  </div>
                 </div>
                 <div className="grow block text-sm font-medium text-gray-900 dark:text-white">
                   <p className='mb-2'>End date/time:</p>
-                  <Datetime 
-                    locale='en-SG'
-                    isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
-                    initialValue={moment(slot.startDateTime).add(slot.duration, 'hours')}
-                    timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
-                    onChange={(e) => (endDateTime.current = e)}
-                  />
+                  <div className='text-black'>
+                    <Datetime 
+                      locale='en-SG'
+                      isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
+                      initialValue={moment(slot.startDateTime).add(slot.duration, 'hours')}
+                      timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
+                      onChange={(e) => (endDateTime.current = e)}
+                    />
+                  </div>
                 </div>
               </div>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Slots must start/end on the same day. Maximum slot duration is 3 hours. Slot timing must be between 1400H-2345H.</p>

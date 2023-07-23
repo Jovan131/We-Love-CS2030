@@ -73,8 +73,8 @@ export default function UsersTable({ users }: AppProps) {
         </Table.Header>
         <Table.Body items={list.items}>
           {(user) => (
-            <Table.Row key={user.id} css={{color: "white"}}>
-              {(columnKey) => <Table.Cell>{user[columnKey]}</Table.Cell>}
+            <Table.Row key={user.id}>
+              {(columnKey) => <Table.Cell><div className='text-black dark:text-white'>{user[columnKey]}</div></Table.Cell>}
             </Table.Row>
           )}
         </Table.Body>

@@ -109,7 +109,9 @@ function ManageSlotsTable({ slots, igsHeaded }: AppProps) {
           {(slot: Slot) => (
             <Table.Row key={slot.id} css={{themecolor: "white"}}>
               {(columnKey) => (
-                <Table.Cell>{renderCell(slot, columnKey)}</Table.Cell>
+                <Table.Cell>
+                  <p className='text-black dark:text-white'>{renderCell(slot, columnKey)}</p>
+                </Table.Cell>
               )}
             </Table.Row>
           )}
