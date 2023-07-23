@@ -35,10 +35,9 @@ function UploadTimetable({ residentEmail }: AppProps) {
       }
     })
     .then(() => {
-      toast.success('Your NUSMods timetable has been uploaded!', {
-        duration: 4000
+      toast.success('Your NUSMods timetable has been uploaded! Go to dashboard to see your lessons!', {
+        duration: 10000
       })
-      router.push('/dashboard/schedule')
     })
     .catch((error) => {
       toast.error(error.response.data)
