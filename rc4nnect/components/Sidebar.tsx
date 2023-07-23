@@ -16,7 +16,7 @@ export default function Sidebar() {
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-dark-purple h-screen p-5 pt-8 sticky top-0 duration-300`}
+      } dark:bg-dark-purple h-screen p-5 pt-8 sticky top-0 duration-300 bg-gray-800`}
     >
       <Image
         alt='control'

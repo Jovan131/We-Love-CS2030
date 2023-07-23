@@ -49,17 +49,17 @@ export default function ApplicationForm({ igs, email }: AppProps) {
   return (
     <div className='mt-20'>
       <div className="mb-6">
-        <label htmlFor="full-name" className="block mb-2 text-sm font-medium text-white dark:text-white">Full Name</label>
-        <input id="full-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+        <label htmlFor="full-name" className="block mb-2 text-sm font-medium text-black dark:text-white">Full Name</label>
+        <input id="full-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " 
         onChange={(e) => (fullName.current = e.target.value)} />
       </div>
       <div className="mb-6">
-        <label htmlFor="tele-handle" className="block mb-2 text-sm font-medium text-white dark:text-white">{`Telegram Handle (include the @)`}</label>
-        <input id="tele-handle" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="@example123" 
+        <label htmlFor="tele-handle" className="block mb-2 text-sm font-medium text-black dark:text-white">{`Telegram Handle (include the @)`}</label>
+        <input id="tele-handle" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="@example123" 
         onChange={(e) => (teleHandle.current = e.target.value)} />
       </div>
       <div className="mb-28">
-        <div className="block mb-2 text-sm font-medium text-white dark:text-white">Select which IG you are applying for:</div>
+        <div className="block mb-2 text-sm font-medium text-black dark:text-white">Select which IG you are applying for:</div>
         <Select
           classNames={{
             menuList: () => 'text-black text-sm',

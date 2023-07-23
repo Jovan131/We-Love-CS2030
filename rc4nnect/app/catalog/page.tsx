@@ -32,7 +32,7 @@ export default async function page() {
     const ig = await getIg()
     return (
         <Layout>
-
+            <h1 className="text-4xl font-bold ml-4 text-black dark:text-white"> IG Catalog </h1>
             <DynamicCatalog igInfos={ig} email={session?.user?.email!}/>
 
         </Layout>

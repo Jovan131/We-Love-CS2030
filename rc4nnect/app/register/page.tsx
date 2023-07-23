@@ -60,20 +60,20 @@ function Register() {
           <h1 className="mb-10 mt-0 text-4xl font-medium leading-tight text-primary  text-white">Welcome to rc4nnect</h1>
           <form className="max-w-[40ch]" onSubmit={register}>
             <input
-              className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
+              className="outline-none bg-white text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
               placeholder="Name..."
               value={data.name}
               onChange={(e) => setData({ ...data, name: e.target.value })}
               />
             <input
-              className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
+              className="outline-none bg-white text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-blue-300"
               placeholder="NUS Email..."
               value={data.email}
               onChange={(e) => setData({ ...data, email: e.target.value })}
               />
             <div className='relative'>
               <input
-                className="outline-none text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
+                className="outline-none bg-white text-slate-900 p-2 w-full max-w-[40ch] duration-300 border-b-2 border-solid border-white focus:border-cyan-300"
                 type={showPassword ? "text" : "password"}
                 placeholder="Password ..."
                 onChange={(e) => setData({ ...data, password: e.target.value })}

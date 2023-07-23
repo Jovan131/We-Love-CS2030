@@ -92,8 +92,8 @@ const Calendar: React.FC<AppProps> = ({slots, session, lessons}) => {
       <div>
         {daysOfWeek.map((day, index) => (
           <div key={index} className="grid grid-cols-[50px_auto] min-h-[45px] mb-2">
-            <div className='flex items-center justify-end bg-slate-900 sticky left-[-1px] z-20 '>
-              <div className="text-center align-middle mr-2">{day}</div>
+            <div className='flex items-center justify-end bg-white dark:bg-slate-900 sticky left-[-1px] z-20 '>
+              <div className="text-center align-middle mr-2 text-black dark:text-white">{day}</div>
             </div>
             <div className="bg-gray-300 grid mt-[1px]" style={{ minWidth: `${900 + additionalWidth}px`, gridTemplateColumns: `repeat(${(24 - earliestHour) * 4}, minmax(0, 1fr))` }}>
               {getSlotsAndLessons(slots, lessons, index)}

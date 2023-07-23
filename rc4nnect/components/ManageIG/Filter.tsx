@@ -15,44 +15,44 @@ function Filter({ changeFilter }: AppProps) {
   return (
     <div className="grid grid-cols-7 p-8 ">
         <button onClick={() => {changeFilter("All"); setActiveButton("All")}} 
-                className={activeButton == "All" ? "bg-violet-700 text-white font-bold py-2 px-4 rounded-full m-3"
-                                                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
+                className={activeButton == "All" ? "bg-violet-900 dark:bg-violet-700 hover:bg-violet-950 dark:hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full m-3"
+                                                : "bg-blue-700 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
                   All
         </button>
 
         <button onClick={() => {changeFilter("Arts"); setActiveButton("Arts")}} 
-                className={activeButton == "Arts" ? "bg-violet-700 text-white font-bold py-2 px-4 rounded-full m-3"
-                                                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
+                className={activeButton == "Arts" ? "bg-violet-900 dark:bg-violet-700 hover:bg-violet-950 dark:hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full m-3"
+                : "bg-blue-700 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
                   Arts
         </button>
 
         <button onClick={() => {changeFilter("Music"); setActiveButton("Music")}} 
-                className={activeButton == "Music" ? "bg-violet-700 text-white font-bold py-2 px-4 rounded-full m-3"
-                                                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
+                className={activeButton == "Music" ? "bg-violet-900 dark:bg-violet-700 hover:bg-violet-950 dark:hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full m-3"
+                : "bg-blue-700 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
                   Music
         </button>
 
         <button onClick={() => {changeFilter("Lifestyle"); setActiveButton("Lifestyle")}} 
-                className={activeButton == "Lifestyle" ? "bg-violet-700 text-white font-bold py-2 px-4 rounded-full m-3"
-                                                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
+                className={activeButton == "Lifestyle" ? "bg-violet-900 dark:bg-violet-700 hover:bg-violet-950 dark:hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full m-3"
+                : "bg-blue-700 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
                   Lifestyle
         </button>
 
         <button onClick={() => {changeFilter("Sports"); setActiveButton("Sports")}} 
-                className={activeButton == "Sports" ? "bg-violet-700 text-white font-bold py-2 px-4 rounded-full m-3"
-                                                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
+                className={activeButton == "Sports" ? "bg-violet-900 dark:bg-violet-700 hover:bg-violet-950 dark:hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full m-3"
+                : "bg-blue-700 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
                   Sports
         </button>
         
         <button onClick={() => {changeFilter("Cogpods"); setActiveButton("Cogpods")}} 
-                className={activeButton == "Cogpods" ? "bg-violet-700 text-white font-bold py-2 px-4 rounded-full m-3"
-                                                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
+                className={activeButton == "Cogpods" ? "bg-violet-900 dark:bg-violet-700 hover:bg-violet-950 dark:hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full m-3"
+                : "bg-blue-700 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
                   Cogpods
         </button>
 
         <button onClick={() => {changeFilter("Community"); setActiveButton("Community")}} 
-                className={activeButton == "Community" ? "bg-violet-700 text-white font-bold py-2 px-4 rounded-full m-3"
-                                                : "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
+                className={activeButton == "Community" ? "bg-violet-900 dark:bg-violet-700 hover:bg-violet-950 dark:hover:bg-violet-900 text-white font-bold py-2 px-4 rounded-full m-3"
+                : "bg-blue-700 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-3"}>
                   Community
         </button>
 
