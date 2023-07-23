@@ -20,7 +20,7 @@ const Lesson: React.FC<AppProps> = ({lessonInfo, earliestHour}) => {
     <div className="bg-gray-600 rounded z-[5] mb-px py-2 text-center mx-px"
     style={{gridColumnStart: colStartValue, gridColumnEnd: colEndValue}}
     key={lessonInfo.id}>
-      {`${lessonInfo.name} @ ${lessonInfo.location}`}
+      {lessonInfo.name}
     </div>
   );
 }
