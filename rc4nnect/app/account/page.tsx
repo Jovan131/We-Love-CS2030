@@ -9,7 +9,7 @@ type AppProps = {
 }
 
 export default async function Account({ searchParams }: AppProps) {
-    const token = Object.keys(searchParams)[0];
+    const token = Object.keys(searchParams)[0] ?? '';
 
     const user = await prisma.resident.findFirst({
       where: {
