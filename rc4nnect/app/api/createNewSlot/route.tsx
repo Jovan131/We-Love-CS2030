@@ -1,5 +1,6 @@
 import { prisma } from '@/app/db'
 import moment, { Moment } from 'moment'
+import 'moment/locale/en-sg'
 import { NextResponse } from 'next/server'
 
 type inputObj = {
