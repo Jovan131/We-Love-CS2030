@@ -11,6 +11,7 @@ export async function GET(
   }
 ) {
   const { token } = params
+  const url = _request.nextUrl.clone()
   
   const user = await prisma.resident.findFirst({
     where: {
@@ -56,5 +57,7 @@ export async function GET(
     },
   })
 
-  return NextResponse.redirect('https://we-love-cs-2030.vercel.app/account')
+  console.log('token created')
+  url.pathname = '/account'
+  return NextResponse.redirect(url)
 }
