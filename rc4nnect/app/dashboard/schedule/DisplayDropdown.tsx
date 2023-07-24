@@ -14,7 +14,7 @@ const options = [
 export default function DisplayDropdown({ changeDisplayType }: AppProps) {
   return (
     <div className='w-[361px] pb-[116px]'>
-      <label className="block mb-1 text-sm font-medium text-white dark:text-white">Filter:</label>
+      <label className="block mb-1 text-sm font-medium text-black dark:text-white">Filter:</label>
       <div className='text-black'>
         <Select 
           classNames={{

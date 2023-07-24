@@ -7,6 +7,7 @@ import CreatableSelect from 'react-select/creatable'
 import Datetime from 'react-datetime'
 import { useRouter } from 'next/navigation';
 import moment, { Moment } from 'moment';
+import 'moment/locale/en-sg'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
@@ -74,27 +75,31 @@ function EditButton({ slot }: AppProps) {
               <input type="text" id="ig_name" className="cursor-not-allowed bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
               defaultValue={slot.igName} disabled />
             </div>
-            <div className='mb-3'>
+            <div className='mb-60'>
               <div className='flex gap-10'>
                 <div className="grow block text-sm font-medium text-gray-900 dark:text-white">
                   <p className='mb-2'>Start date/time:</p>
-                  <Datetime 
-                    locale='en-SG'
-                    isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
-                    initialValue={slot.startDateTime}
-                    timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
-                    onChange={(e) => (startDateTime.current = e)}
-                  />
+                  <div className='text-black'>
+                    <Datetime 
+                      locale='en-SG'
+                      isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
+                      initialValue={slot.startDateTime}
+                      timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
+                      onChange={(e) => (startDateTime.current = e)}
+                    />
+                  </div>
                 </div>
                 <div className="grow block text-sm font-medium text-gray-900 dark:text-white">
                   <p className='mb-2'>End date/time:</p>
-                  <Datetime 
-                    locale='en-SG'
-                    isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
-                    initialValue={moment(slot.startDateTime).add(slot.duration, 'hours')}
-                    timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
-                    onChange={(e) => (endDateTime.current = e)}
-                  />
+                  <div className='text-black'>
+                    <Datetime 
+                      locale='en-SG'
+                      isValidDate={(current) => current.isBetween('2023-08-06', '2023-12-09') &&  current.day() !== 0 && current.day() !== 6}
+                      initialValue={moment(slot.startDateTime).add(slot.duration, 'hours')}
+                      timeConstraints={{hours: {min: 14, max: 23, step: 1}, minutes: {min: 0, max: 59, step: 15}}}
+                      onChange={(e) => (endDateTime.current = e)}
+                    />
+                  </div>
                 </div>
               </div>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Slots must start/end on the same day. Maximum slot duration is 3 hours. Slot timing must be between 1400H-2345H.</p>
