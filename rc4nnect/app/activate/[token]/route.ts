@@ -1,5 +1,5 @@
 import { prisma } from '@/app/db'
-import { redirect, useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { NextRequest } from 'next/server'
 
 export async function GET(
@@ -12,8 +12,6 @@ export async function GET(
 ) {
   const { token } = params
   
-  const router = useRouter()
-
   const user = await prisma.resident.findFirst({
     where: {
       Token: {
@@ -58,5 +56,5 @@ export async function GET(
     },
   })
 
-  router.push('/account')
+  redirect('/account')
 }
