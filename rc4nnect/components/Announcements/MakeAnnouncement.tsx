@@ -18,7 +18,7 @@ type AppProps = {
 const Form: React.FC<AppProps> = ({igsHeaded}) => {
   
     const [data, setData] = useState({
-        iG: '',
+        iG: igsHeaded![0].name,
         title: '',
         content: ''
       })
@@ -36,7 +36,6 @@ const Form: React.FC<AppProps> = ({igsHeaded}) => {
     }
 
     if (igsHeaded!.length == 1) {
-      setData({ ...data, iG: igsHeaded![0].name})
       return (
         <form onSubmit={announce}> 
           <div className="mb-6 mt-6">
