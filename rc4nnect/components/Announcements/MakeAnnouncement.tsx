@@ -41,11 +41,11 @@ const Form: React.FC<AppProps> = ({igsHeaded}) => {
         <form onSubmit={announce}> 
           <div className="mb-6 mt-6">
           <label htmlFor="message" className="block mb-2 text-sm font-medium text-black dark:text-white">Interest Group</label>
-            <input type="text" id="disabled-input" aria-label="disabled input" className="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value={igsHeaded![0].name} disabled /> 
+            <input type="text" id="disabled-input" aria-label="disabled input" className="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value={igsHeaded![0].name} disabled /> 
           </div>
           <div className="mb-6">
             <label htmlFor="title" className="block mb-2 text-sm font-medium text-black dark:text-white">Title</label>
-            <input type="text" id="text" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:shadow-sm-light" placeholder="Title"required 
+            <input type="text" id="text" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Title"required 
             value={data.title}
             onChange={(e) => setData({ ...data, title: e.target.value })}/>
           </div>
