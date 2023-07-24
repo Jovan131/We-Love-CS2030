@@ -4,7 +4,6 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Logo from "public/logo.svg"
-import { toast } from 'react-hot-toast'
 
 export default function Account() {
     const router = useRouter()
