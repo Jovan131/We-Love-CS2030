@@ -68,7 +68,7 @@ export async function POST(input: any) {
 
   console.log(moment(endDateTime).diff(moment(startDateTime), 'hours', true))
 
-  const title = `New session on ${moment(startDateTime).format("dddd, MMMM Do")}, ${moment(startDateTime).format("hh:mm A")} - ${moment(endDateTime).format("hh:mm A")}`
+  const title = `New session on ${moment(startDateTime).format("dddd, MMMM Do")}, ${moment(startDateTime).local().format("hh:mm A")} - ${moment(endDateTime).local().format("hh:mm A")}`
 
   const content = `Venue: ${venue}, Capacity: ${capacity}`
 
