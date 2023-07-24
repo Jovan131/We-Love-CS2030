@@ -14,7 +14,7 @@ export async function POST(input: any) {
   const sgMail = require('@sendgrid/mail')
   sgMail.setApiKey(process.env.SENDGRID_API)
   
-  const verifyMsg = `Hello ${name}, please activate your account by clicking this link: https://we-love-cs-2030.vercel.app/account?${activeToken}` //change link to production link (need to check Vercel config I am not sure yet)
+  const verifyMsg = `Hello ${name}, please activate your account by clicking this link: https://we-love-cs-2030.vercel.app/account?token=${activeToken}` //change link to production link (need to check Vercel config I am not sure yet)
 
   const msg = {
     to: email, // Change to your recipient

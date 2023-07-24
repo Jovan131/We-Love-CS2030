@@ -5,11 +5,13 @@ import { prisma } from '../db'
 import Link from 'next/link'
 
 type AppProps = {
-  searchParams: string
+  searchParams: {
+    token: string
+  }
 }
 
 export default async function Account({ searchParams }: AppProps) {
-    const token = Object.keys(searchParams)[0] ?? '';
+    const token = searchParams.token;
 
     const user = await prisma.resident.findFirst({
       where: {
@@ -60,7 +62,7 @@ export default async function Account({ searchParams }: AppProps) {
     
       await prisma.token.update({
         where: {
-          token: token,
+          token
         },
         data: {
           activatedAt: new Date(),
