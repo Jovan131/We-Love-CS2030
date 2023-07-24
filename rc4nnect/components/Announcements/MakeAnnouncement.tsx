@@ -36,8 +36,8 @@ const Form: React.FC<AppProps> = ({igsHeaded}) => {
     }
 
     if (igsHeaded!.length == 1) {
+      setData({ ...data, iG: igsHeaded![0].name})
       return (
-
         <form onSubmit={announce}> 
           <div className="mb-6 mt-6">
           <label htmlFor="message" className="block mb-2 text-sm font-medium text-black dark:text-white">Interest Group</label>
