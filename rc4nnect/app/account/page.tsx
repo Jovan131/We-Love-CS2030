@@ -1,62 +1,12 @@
 'use client'
 
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Logo from "public/logo.svg"
-import { prisma } from '../db'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
-type AppProps = {
-  searchParams: {
-    token: string
-  }
-}
-
-export default async function Account({ searchParams }: AppProps) {
-    const token = searchParams.token;
+export default function Account() {
     const router = useRouter()
-
-    const user = await prisma.resident.findFirst({
-      where: {
-        Token: {
-          some: {
-            AND: [
-              {
-                activatedAt: null,
-              },
-              {
-                createdAt: {
-                  gt: new Date(Date.now() - 24 * 60 * 60 * 1000), // 24 hours ago
-                },
-              },
-              {
-                token,
-              },
-            ],
-          },
-        },
-      },
-    })
-  
-    await prisma.resident.update({
-      where: {
-        id: user?.id,
-      },
-      data: {
-        active: true,
-      },
-    })
-    
-    await prisma.token.update({
-      where: {
-        token
-      },
-      data: {
-        activatedAt: new Date(),
-      },
-    })
-
     return (
 
         <div className="App flex items-center justify-center h-screen bg-slate-900 select-none">
@@ -77,5 +27,6 @@ export default async function Account({ searchParams }: AppProps) {
             </div>
           </div>
         </div>
+  
     )
-}
+  }
