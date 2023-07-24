@@ -1,6 +1,6 @@
 import { prisma } from '@/app/db'
 import { redirect } from 'next/navigation'
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
   _request: NextRequest,
@@ -56,5 +56,5 @@ export async function GET(
     },
   })
 
-  redirect('/account')
+  return NextResponse.redirect('https://we-love-cs-2030.vercel.app/account')
 }
