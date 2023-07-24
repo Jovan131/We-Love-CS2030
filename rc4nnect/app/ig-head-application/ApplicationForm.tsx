@@ -50,7 +50,7 @@ export default function ApplicationForm({ igs, email }: AppProps) {
     <div className='mt-20'>
       <div className="mb-6">
         <label htmlFor="full-name" className="block mb-2 text-sm font-medium text-black dark:text-white">Full Name</label>
-        <input id="full-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " 
+        <input id="full-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name..." 
         onChange={(e) => (fullName.current = e.target.value)} />
       </div>
       <div className="mb-6">
