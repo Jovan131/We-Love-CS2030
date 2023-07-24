@@ -21,7 +21,7 @@ export async function POST(request: any) {
     }
   })
 
-  const title = `Session on ${moment(startDateTime).format("dddd, MMMM Do")}, ${moment(startDateTime).format("hh:mm A")} has been cancelled`
+  const title = `Session on ${moment(startDateTime).format("dddd, MMMM Do")}, ${moment(startDateTime).local().format("hh:mm A")} has been cancelled`
 
   const content = `Our IG Exco will update you on future sessions soon!`
 

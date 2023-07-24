@@ -64,7 +64,7 @@ export async function POST(input: any) {
   const igSelected = oldSlot?.igName!
 
 
-  const title = `Details for session on ${moment(oldTime).format("dddd, MMMM Do")}, ${moment(oldTime).format("hh:mm A")} has been updated`
+  const title = `Details for session on ${moment(oldTime).format("dddd, MMMM Do")}, ${moment(oldTime).local().format("hh:mm A")} has been updated`
 
   const content = `Please check the All IGs schedule for more details!`
 
