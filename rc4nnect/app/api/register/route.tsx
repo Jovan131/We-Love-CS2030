@@ -9,7 +9,7 @@ export async function POST(input: any) {
   const body = await input.json()
   const { name, email, password, confirmPassword } = body
 
-  const activeToken = `${randomUUID()}${randomUUID()}`.replace('-', '')
+  const activeToken = `${randomUUID()}${randomUUID()}`.replace(/-/g, '')
 
   const sgMail = require('@sendgrid/mail')
   sgMail.setApiKey(process.env.SENDGRID_API)
