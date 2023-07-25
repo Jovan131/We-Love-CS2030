@@ -56,5 +56,5 @@ export async function GET(
     },
   })
 
-  redirect('/login')
+  redirect('/api/auth/signin')
 }
