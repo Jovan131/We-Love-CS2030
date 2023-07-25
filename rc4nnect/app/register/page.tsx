@@ -28,7 +28,7 @@ function Register() {
     axios.post('/api/register', data)
     .then(() => {
       toast.success('Please check your email to activate your account!')
-      router.push('/authentication/registersuccess')
+      router.push('/login')
     })
     .catch((error) => {
       toast.error(error.response.data)
