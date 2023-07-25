@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 function Activate() {
     const currentPage = usePathname();
 
-    const token = currentPage.slice(9).toString()
+    const token = currentPage.slice(10).toString()
 
     const router = useRouter()
 
