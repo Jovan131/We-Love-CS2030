@@ -1,18 +1,13 @@
 'use client'
 
 import React from "react";
-import Layout from "@/components/Layout";
 import axios from "axios";
-import { hash } from "bcrypt";
 import { useState } from "react";
 import { toast } from "react-hot-toast"
 import { useRouter } from 'next/navigation'
 import { usePathname } from "next/navigation";
-import { useRef } from "react";
-import NoSidebarLayout from "@/components/NoSidebarLayout";
 import Image from 'next/image'
 import Logo from "public/logo.svg"
-import { NextResponse } from 'next/server'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 function ResetPassword() {

@@ -1,16 +1,9 @@
 import { prisma } from '@/app/db'
-import { redirect } from 'next/navigation'
-import { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(
-  _request: NextRequest,
-  {
-    params,
-  }: {
-    params: { token: string }
-  }
-) {
-  const { token } = params
+export async function POST(input: any) {
+    const body = await input.json();
+    const { token } = body;
   
   const user = await prisma.resident.findFirst({
     where: {
@@ -38,7 +31,7 @@ export async function GET(
     throw new Error('Token is invalid or expired')
   }
 
-  await prisma.resident.update({
+  const createUser = await prisma.resident.update({
     where: {
       id: user.id,
     },
@@ -56,5 +49,6 @@ export async function GET(
     },
   })
 
-  redirect('/account')
+  return NextResponse.json(createUser)
+
 }
