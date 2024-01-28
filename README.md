@@ -5,6 +5,6 @@ our readme documentation: https://docs.google.com/document/d/1__bX_a6_WWosxq6ac8
 
 website: https://we-love-cs-2030.vercel.app/
 
-If you do not have an NUS email address to register, login using the following account:
-email: e0957657@u.nus.edu
+If you do not have an NUS email address to register, login using the following account:   
+email: e0957657@u.nus.edu  
 password: password123
